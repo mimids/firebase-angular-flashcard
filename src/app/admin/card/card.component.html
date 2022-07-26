@@ -1,0 +1,29 @@
+<form autocomplete="off" [formGroup]="createForm" (ngSubmit)="onCreate(createForm.value)" class="flex-column">
+    <mat-form-field appearance="outline" color="accent" class="form-field">
+         <label i18n>Category Name </label>
+        <input matInput type="text" formControlName="name" autocomplete="off" />
+  
+        <mat-divider></mat-divider>
+  
+     
+    </mat-form-field>
+  
+    <button  
+    mat-raised-button
+    class="icon-after rounded"
+    color="accent"
+    type="submit">   <span i18n>Submit</span>
+    <mat-icon>send</mat-icon></button>
+  </form>
+  
+  <hr>
+  <h1>List</h1>
+  <div *ngFor="let data of datas" class="list">
+  <mat-card class="card">
+    <mat-card-title>{{ data.name }} </mat-card-title>
+     
+    <mat-card-content>
+  
+    </mat-card-content>
+  </mat-card>
+  </div>

@@ -1,0 +1,57 @@
+:host {
+    text-align: center;
+    .flip-container {
+        perspective: 400px;
+      }
+    
+    .flip-container.flip .flipper {
+        transform: rotateY(180deg);
+      }
+      
+      .flip-container,
+      .front,
+      .back {
+        width: 350px;
+        height: 150px;
+      }
+      
+      /* flip speed goes here */
+      .flipper {
+        transition: 0.6s;
+        transform-style: preserve-3d;
+        position: relative;
+    
+      }
+      
+      /* hide back of pane during swap */
+      .front,
+      .back {
+        backface-visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        color: white;
+      }
+      
+      /* front pane, placed above back */
+      .front {
+        z-index: 2;
+        /* for firefox 31 */
+        color: black;
+        transform: rotateY(0deg);
+        border: 1px solid navy;
+        background-color: lightblue;
+      }
+      
+      /* back, initially hidden pane */
+      .back {
+        transform: rotateY(180deg);
+        border: 1px solid navy;
+        background-color: cadetblue;
+      }
+      button{
+        margin: 10px;
+        width: 120px
+      }
+    }

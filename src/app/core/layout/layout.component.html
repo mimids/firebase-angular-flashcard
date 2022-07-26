@@ -1,0 +1,49 @@
+<mat-sidenav-container hasBackdrop="false" fullscreen >
+    <mat-sidenav #sidenav [mode]="(isLarge$ | async) ? 'side' : 'over'" [opened]="isLarge$ | async"  position="start" (click)="listItemClick()">
+      <nav *ngIf="account">
+      <app-layout-sidenav
+        [destinations]="destinations"
+        [account]="account"
+        [sidenav]="sidenav"
+      ></app-layout-sidenav>
+    </nav>
+    <nav *ngIf="isUnknownUserAllowedToNavigate && !account">
+      <app-layout-sidenav
+        [destinations]="unknownUserDestination"
+        [account]="account"
+        [sidenav]="sidenav"
+      ></app-layout-sidenav>
+    </nav>
+    </mat-sidenav>
+  
+    <mat-sidenav-content class="layout">
+      <nav *ngIf="account || isUnknownUserAllowedToNavigate">
+        <app-layout-nav
+          [account]="account"
+          [appTitle]="appTitle"
+          [sidenav]="sidenav"
+        ></app-layout-nav>
+      </nav>
+  
+      <main class="content">
+        <router-outlet></router-outlet>
+      </main>
+  
+      <footer *ngIf="account || isUnknownUserAllowedToNavigate">
+        <app-layout-footer
+          [appDescription]="appDescription"
+          [appVersion]="appVersion"
+        ></app-layout-footer>
+      </footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  <div hidden>
+    <h1 #appTitleElement>Flash</h1>
+    <h2 #appDescriptionElement i18n="@@app-description"
+      >Create a vocabulary book.</h2
+    >
+    <div i18n="@@home">Home</div>
+    <div i18n="@@flashcard">Flash card</div>
+  </div>
+  

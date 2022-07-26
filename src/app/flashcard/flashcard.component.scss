@@ -1,0 +1,11 @@
+:host {
+    text-align: center;
+    margin: 0 auto;
+
+    .card-list{
+         display:flex;
+         justify-content: center;
+         flex-direction : column;
+ }
+
+}

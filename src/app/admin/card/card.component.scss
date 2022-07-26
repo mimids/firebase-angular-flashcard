@@ -1,0 +1,37 @@
+.form-field {
+    width: 90%;
+    margin-left: 20px;
+    
+  }
+
+    
+select{
+    border: 1px solid gray ;
+}
+label{
+    font-size: larger;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+}
+
+input{
+    min-height: 50px;
+    border: 1px solid gray ;
+}
+
+textarea{
+    border: 1px solid gray ;
+}
+
+button{
+    width: 90%; text-align: center;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.list{
+    width: 90%; 
+    margin-left: 20px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,46 @@
+<form autocomplete="off" [formGroup]="createForm" (ngSubmit)="onCreate(createForm.value)" class="flex-column">
+    <mat-form-field appearance="outline" color="accent" class="form-field">
+         <label i18n>Word </label>
+        <input matInput type="text" formControlName="word" autocomplete="off" />
+  
+        <mat-divider></mat-divider>
+  
+      <label i18n>Language </label>
+      <mat-select formControlName="lang_word">
+          <mat-option value="fr" i18n>Franch</mat-option>
+          <mat-option value="en" i18n>English</mat-option>
+          <mat-option value="jp" i18n>Japanise</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" color="accent" class="form-field">
+      <label>Meaning </label>
+      <textarea   matInput type="text" formControlName="meaning" autocomplete="off"  cols="30" rows="10"></textarea>
+      <mat-divider></mat-divider>
+      <label i18n >Language</label>
+        <mat-select formControlName="lang_meaning">
+            <mat-option value="fr" i18n>Franch</mat-option>
+            <mat-option value="en" i18n>English</mat-option>
+            <mat-option value="jp" i18n>Japanise</mat-option>
+        </mat-select>
+    </mat-form-field>
+  
+    <button  
+    mat-raised-button
+    class="icon-after rounded"
+    color="accent"
+    type="submit">   <span i18n>Submit</span>
+    <mat-icon>send</mat-icon></button>
+  </form>
+  
+  <hr>
+  <h1>List</h1>
+  <div *ngFor="let data of datas" class="list">
+  <mat-card class="card">
+    <mat-card-title>{{ data.word }} ({{ data.lang_word }})</mat-card-title>
+      <mat-card-subtitle i18n>Meaning ({{ data.lang_meaning }})</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{ data.meaning }}</p>
+    </mat-card-content>
+  </mat-card>
+  </div>

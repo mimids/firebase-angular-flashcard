@@ -1,0 +1,41 @@
+<section class="layout-nav theme-primary">
+  <div class="media-hide-on-large">
+    <button
+      *ngIf="sidenav"
+      mat-icon-button
+      (click)="sidenav.toggle()"
+      matTooltip="Toggle sidenav"
+      i18n-matTooltip
+      aria-label="Button that displays a tooltip when focused or hovered over"
+      i18n-aria-label
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div class="app-brand mr-16">
+    <img
+      src="assets/icons/icon-72x72.png"
+      class="app-brand-icon py-5"
+      i18n-alt
+      alt="App icon"
+      width="50"
+      height="50"
+    />
+    <h1 class="app-brand-title">{{ appTitle }}</h1>
+  </div>
+  <div class="media-hide-on-small p-0">
+    <a
+      *ngFor="let destination of destinations; trackBy: trackByIndex"
+      mat-button
+      routerLinkActive="theme-primary active"
+      [routerLink]="destination.path"
+    >
+      <mat-icon mat-list-icon class="mr-10">{{ destination.icon }}</mat-icon>
+      <span>{{ destination.name }}</span>
+    </a>
+  </div>
+
+  <span class="fill-remaining-space media-hide-on-small"></span>
+
+  <app-layout-setting [account]="account"></app-layout-setting>
+</section>

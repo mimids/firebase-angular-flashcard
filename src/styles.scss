@@ -1,0 +1,124 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+html, body { height: 100%; }
+
+
+
+
+$palette-light-primary: mat.define-palette(mat.$grey-palette, 200, 100, 900);
+$palette-light-accent: mat.define-palette(mat.$light-blue-palette, 800, 100, 900);
+$palette-light-warn: mat.define-palette(mat.$red-palette, 700, 100, 900);
+$palette-dark-primary: mat.define-palette(mat.$grey-palette, 900, 400, 900);
+$palette-dark-accent: mat.define-palette(mat.$light-blue-palette, 800, 100, 400);
+$palette-dark-warn: mat.define-palette(mat.$red-palette, 400, 100, 400);
+
+$theme-light: mat.define-light-theme(
+  (
+    color: (
+      primary: $palette-light-primary,
+      accent: $palette-light-accent,
+      warn: $palette-light-warn,
+    ),
+  )
+);
+$foreground-light: map-get($theme-light, foreground);
+$theme-dark: mat.define-dark-theme(
+  (
+    color: (
+      primary: $palette-dark-primary,
+      accent: $palette-dark-accent,
+      warn: $palette-dark-warn,
+    ),
+  )
+);
+$foreground-dark: map-get($theme-dark, foreground);
+
+@mixin class-theme($palette, $shade) {
+  $background: mat.get-color-from-palette($palette, $shade);
+  $color: mat.get-color-from-palette($palette, #{$shade}-contrast);
+  background: $background;
+  color: $color;
+  &.transparent {
+    background: rgba($background, 0.1);
+    color: unset;
+  }
+  &.active {
+    background: rgba($color, 0.1);
+    color: unset;
+  }
+}
+@mixin class-theme-color($palette, $shade) {
+  $color: mat.get-color-from-palette($palette, $shade);
+  color: $color;
+}
+@mixin class-builder($palette-primary, $palette-accent, $palette-warn, $foreground) {
+  .theme-primary {
+    @include class-theme($palette-primary, default);
+  }
+  .theme-primary-color {
+    @include class-theme-color($palette-primary, default);
+  }
+  .theme-accent {
+    @include class-theme($palette-accent, default);
+  }
+  .theme-accent-color {
+    @include class-theme-color($palette-accent, default);
+  }
+  .theme-warn {
+    @include class-theme($palette-warn, default);
+  }
+  .theme-warn-color {
+    @include class-theme-color($palette-warn, default);
+  }
+  .theme-foreground-secondary-color {
+    @include class-theme-color($foreground, secondary-text);
+  }
+}
+.theme-light {
+  @include mat.all-component-themes($theme-light);
+  @include class-builder(
+    $palette-light-primary,
+    $palette-light-accent,
+    $palette-light-warn,
+    $foreground-light
+  );
+  color-scheme: light;
+
+
+  .theme-background {
+    background-color: #ffffff;
+  }
+
+  .theme-foreground {
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0;
+  }
+  .theme-toolbar-background {
+    background-color: #f5f5f5;
+  }
+}
+.theme-dark {
+  @include mat.all-component-colors($theme-dark);
+  @include class-builder(
+    $palette-dark-primary,
+    $palette-dark-accent,
+    $palette-dark-warn,
+    $foreground-dark
+  );
+  color-scheme: dark;
+  scrollbar-color: #6b6b6b #2b2b2b;
+
+
+  .theme-background {
+    background-color: #303030;
+  }
+
+  .theme-foreground {
+    background-color: #424242;
+    border-top: 1px solid #616161;
+  }
+  .theme-toolbar-background {
+    background-color: #212121;
+  }
+}

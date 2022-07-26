@@ -1,0 +1,22 @@
+<section class="card-list">
+    <h2 il8></h2>
+  
+    <div>
+      <div *ngFor="let card of datas">
+        <div class="card-body d-flex justify-content-center">
+          <app-flashcard-contents
+            [card]="card"
+            (answer)="saveAnswer($event)"
+          ></app-flashcard-contents>
+        </div>
+      </div>
+    </div>
+  
+  
+      <div class="card-body d-flex justify-content-center">
+        <button class="btn btn-danger m-2" (click)="reset()">restart</button>
+        <button class="btn btn-success m-2" (click)="delete()">delete</button>
+      </div>
+  
+  </section>
+  

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "flashcard-c24ef": {
+      "hosting": {
+        "ng-flash-card-front": [
+          "flashcard-c24ef"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "flashcard-c24ef"
+  }
+}

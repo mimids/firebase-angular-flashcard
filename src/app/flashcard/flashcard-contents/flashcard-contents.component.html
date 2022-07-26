@@ -1,0 +1,21 @@
+<div class="flip-container" [class.flip]="showAnswer" (click)="flip()">
+    <div class="flipper">
+      <div class="front">
+        {{ card.word }}
+      </div>
+      <div class="back">
+        <div class="flex-column">
+          {{ card.meaning }}
+          <div>
+          <button mat-raised-button color="primary" (click)="setAnswer(true)">
+            right answer
+          </button>
+          <button mat-raised-button dolor="warn" (click)="setAnswer(false)">
+            wrong answer
+          </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

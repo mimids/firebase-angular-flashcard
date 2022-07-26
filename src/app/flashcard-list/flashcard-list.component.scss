@@ -1,0 +1,16 @@
+:host {
+    text-align: center;
+    margin: 0 auto;
+
+
+    .list {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    mat-card {
+        background-color: dimgray;
+    }
+
+}
