@@ -4,10 +4,6 @@
     
   }
 
-    
-select{
-    border: 1px solid gray ;
-}
 label{
     font-size: larger;
     font-weight: bold;
@@ -20,36 +16,21 @@ input{
     border: 1px solid gray ;
 }
 
-textarea{
-    border: 1px solid gray ;
-}
-
-button{
-    width: 90%; text-align: center;
-    margin-left: 20px;
-    margin-bottom: 20px;
-}
-
-.list{
-    width: 90%; 
-    margin-left: 20px;
-    margin-bottom: 20px;
-}
 .mat-form-field {
     margin-right: 4px;
   }
-.tree{
-    text-align: left;
-    margin-left: 0%;
-    display: flex; 
-    justify-content: flex-start
 
+  table{
+    border-collapse:collapse;
+    margin:0 auto;
   }
-
-  .mat-tree {
-    background: transparent;
+  td,th{
+    border:1px solid #ccc;
+    padding:10px;
   }
-    
-  .mat-tree-node {
-
+  tr:first-child th{
+    border-top:5px solid cadetblue;
+  }
+  tr:first-child td{
+    border-top:5px solid #ccc;
   }

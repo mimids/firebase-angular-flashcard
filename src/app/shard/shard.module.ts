@@ -21,10 +21,10 @@ import {MatTreeModule} from '@angular/material/tree';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import {MatCheckboxModule} from '@angular/material/checkbox'
 
-
 import { ImageDefaultDirective } from './directives/image-default.directive';
 import { ApiPathPipe } from './pipes/api-path.pipe';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { DialogCategoryComponent } from './components/dialog-category/dialog-category.component';
 
 const angularModules = [FormsModule, ReactiveFormsModule];
 const materialModules = [
@@ -48,6 +48,8 @@ const materialModules = [
   MatTooltipModule,
   MatTreeModule,
   CdkTreeModule,
+  ReactiveFormsModule
+
 
 ];
 const libraryModules = [];
@@ -57,7 +59,7 @@ const directives = [ImageDefaultDirective];
 const pipes = [ApiPathPipe];
 
 @NgModule({
-  declarations: [ directives, pipes,components],
+  declarations: [ directives, pipes,components, DialogCategoryComponent],
   imports: [CommonModule, materialModules],
   exports: [angularModules, materialModules, components, directives, pipes],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]

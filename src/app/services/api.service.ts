@@ -6,10 +6,11 @@ import {
   collection,
   doc,
   setDoc,
+  deleteDoc,
+  updateDoc,
 } from '@angular/fire/firestore';
 import { Account } from '../core/models/user.model';
-import { Vocabulary } from '../interfaces/card';
-import { UserI } from '../interfaces/user';
+import { Category, Vocabulary } from '../interfaces/card';
 import { UUidService } from './uuid.service';
 
 @Injectable({
@@ -32,6 +33,26 @@ export class ApiService {
     setDoc(uDoc, voca, { merge: true });
   }
 
+  createCategory(data: Category) {
+    const cateRef = collection(this.fire, 'Category');
+    setDoc(doc(cateRef, data.category), data, { merge: true });
+  }
+  async createItem(category: string, item: string[],result:string){
+    const docRef = doc(this.fire, "Category", category);
+    item.push(result);
+    await updateDoc(docRef, {item:item});
+  }
+
+  async deleteCategory(category: string){
+    const docRef = doc(this.fire, "Category", category);
+    await deleteDoc(docRef);
+  }
+
+  async deleteItem(category: string, item: string[]){
+    const docRef = doc(this.fire, "Category", category);
+    await updateDoc(docRef, {item:item});
+  }
+
   // UpdateCard(uuid:string , ):void{
 
   //   const uDoc = doc(this.fire, 'Card', uuid!);
@@ -43,5 +64,4 @@ export class ApiService {
   CreateCard() {}
   ListCards() {}
   ListCategories() {}
-  CreateCategory() {}
 }

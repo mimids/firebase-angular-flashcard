@@ -76,7 +76,8 @@ export type DeleteVocabularyInput = {
 
 
 export type Category = {
-    [key: string]: {[key: string]: any};
+    category: string;
+    item: string[];
 };
 export type CreateCategoryInput = {
     id?: string | null;
