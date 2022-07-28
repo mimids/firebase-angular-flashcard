@@ -101,7 +101,7 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
       },
       {
         name: $localize`:@@admin:Edit Flash Card`,
-        path: 'admin/edit',
+        path: 'admin/flashcard',
         icon: 'adb',
       },
 

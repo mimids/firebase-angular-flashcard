@@ -17,6 +17,7 @@ export class UserService {
   private readonly jwtKey = 'jwt';
   private readonly accountSubject$ = new ReplaySubject<Account | undefined>(1);
   account$ = this.accountSubject$.asObservable();
+  userUid='';
   jwt: string | undefined;
 
   constructor(
@@ -36,6 +37,7 @@ export class UserService {
 
   update(account: Account, jwt?: string): Account {
     this.localStorageService.setItemInStorage(this.accountKey, account);
+    
     this.accountSubject$.next(account);
 
     if (jwt !== undefined) {

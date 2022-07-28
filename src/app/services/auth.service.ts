@@ -10,7 +10,7 @@ import { ApiService } from './api.service';
 export class AuthService {
   user:Account = {email:'',password:'',roles:Role.User};
 
-  constructor(private auth:Auth,private api: ApiService,) { }
+  constructor(private auth:Auth) { }
 
 
 }

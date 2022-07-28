@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injectable, OnIn
 import { Firestore, getDocs, getDoc, collection, doc, setDoc, deleteDoc, onSnapshot } from '@angular/fire/firestore';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogCategoryComponent } from 'src/app/shard/components/dialog-category/dialog-category.component';
+import { DialogComponent } from 'src/app/shard/components/dialog/dialog.component';
 import { Category } from 'src/app/interfaces/card';
 import { DbCollection } from 'src/app/interfaces/firebase';
 
@@ -38,8 +38,9 @@ export class CategoryComponent {
   }
 
   setCategory(): void {
-    const dialogRef = this.dialog.open(DialogCategoryComponent, {
+    const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
+      data: { title : 'Category'}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -49,8 +50,9 @@ export class CategoryComponent {
   }
 
   setItem(category: string): void {
-    const dialogRef = this.dialog.open(DialogCategoryComponent, {
+    const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
+      data: { title: 'Item'}
     });
 
     dialogRef.afterClosed().subscribe(result => {

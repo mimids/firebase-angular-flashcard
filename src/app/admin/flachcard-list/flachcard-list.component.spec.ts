@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogCategoryComponent } from './dialog-category.component';
+import { FlachcardListComponent } from './flachcard-list.component';
 
-describe('DialogCategoryComponent', () => {
-  let component: DialogCategoryComponent;
-  let fixture: ComponentFixture<DialogCategoryComponent>;
+describe('FlachcardListComponent', () => {
+  let component: FlachcardListComponent;
+  let fixture: ComponentFixture<FlachcardListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogCategoryComponent ]
+      declarations: [ FlachcardListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DialogCategoryComponent);
+    fixture = TestBed.createComponent(FlachcardListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -24,7 +24,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox'
 import { ImageDefaultDirective } from './directives/image-default.directive';
 import { ApiPathPipe } from './pipes/api-path.pipe';
 import { AvatarComponent } from './components/avatar/avatar.component';
-import { DialogCategoryComponent } from './components/dialog-category/dialog-category.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 const angularModules = [FormsModule, ReactiveFormsModule];
 const materialModules = [
@@ -54,12 +54,12 @@ const materialModules = [
 ];
 const libraryModules = [];
 
-const components = [AvatarComponent];
+const components = [AvatarComponent,DialogComponent];
 const directives = [ImageDefaultDirective];
 const pipes = [ApiPathPipe];
 
 @NgModule({
-  declarations: [ directives, pipes,components, DialogCategoryComponent],
+  declarations: [ directives, pipes,components],
   imports: [CommonModule, materialModules],
   exports: [angularModules, materialModules, components, directives, pipes],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]

@@ -1,0 +1,14 @@
+table{
+    border-collapse:collapse;
+    margin:0 auto;
+  }
+  td,th{
+    border:1px solid #ccc;
+    padding:10px;
+  }
+  tr:first-child th{
+    border-top:5px solid cadetblue;
+  }
+  tr:first-child td{
+    border-top:5px solid #ccc;
+  }

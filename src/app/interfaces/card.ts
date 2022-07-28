@@ -1,37 +1,24 @@
-//FlashCards
+import { UUidService } from "../services/uuid.service";
 
+//FlashCards
+export interface FlashCardList{
+    id?: string | null;
+    uid: string;
+    name: string;
+}
 export interface FlashCard{
     user: string;
-    listId : number;
+    name: string;
+    id : number;
     word?: string | null;
     meaning?: string | null;
     lang_word?: string | null;
     lang_meaning?: string | null;
     category?: string[];
+    isRight?: boolean | null;
 }
 
-
-//Answer
-
-export interface Answer{
-    id?: string | null;
-    vocabularyID?: string | null;
-    isRight?: boolean | null;
-};
-
-
-// Card
-
-export interface Card{
-    id: string;
-    answers?: Answer | null;
-    name?: string | null;
-
-};
-
-
 //Vocabulary
-
 export interface Vocabulary{
     id?: string | null;
     word?: string | null;
@@ -41,7 +28,7 @@ export interface Vocabulary{
     category?: string[];
 
 };
-
+//Category
 export interface Category{
     category: string;
     item: string[];
