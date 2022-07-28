@@ -1,9 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Vocabulary } from 'src/app/interfaces/card';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Category, Vocabulary } from 'src/app/interfaces/card';
 import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from '../../services/snackbar.service';
-import { Firestore, getDocs, getDoc, collection, doc } from '@angular/fire/firestore';
+import { Firestore, getDocs, getDoc, collection, doc, onSnapshot } from '@angular/fire/firestore';
+import { DbCollection } from 'src/app/interfaces/firebase';
 
 @Component({
   selector: 'app-vocabulary',
@@ -11,17 +12,18 @@ import { Firestore, getDocs, getDoc, collection, doc } from '@angular/fire/fires
   styleUrls: ['./vocabulary.component.scss'],
 })
 export class VocabularyComponent implements OnInit {
-  public createForm: FormGroup;
+  public formVoca: FormGroup;
   public datas: Array<Vocabulary> = [];
+  categoryList: string[] = [];
 
   constructor(
     private fire: Firestore,
-    private api:ApiService,
+    private apiService: ApiService,
     private fb: FormBuilder,
     private readonly changeDetectorRef: ChangeDetectorRef,
-    private readonly snackbarService: SnackbarService
   ) {
-    this.createForm = this.fb.group({
+    this.formVoca = this.fb.group({
+      categorys: new FormControl('', [Validators.required]),
       word: ['', Validators.required],
       meaning: ['', Validators.required],
       lang_word: ['', Validators.required],
@@ -30,42 +32,44 @@ export class VocabularyComponent implements OnInit {
   }
 
   async ngOnInit() {
-this.setList();
-}
-
-
-
-  public onCreate(data: Vocabulary) {
-    console.log(data);
-    
-    this.api
-      .CreateVocabulary(data);
-this.setList();
-
-      // .then((event) => {
-      //   console.log('item created!');
-      //   this.snackbarService.open('item created!', 'accent'),
-      //   this.createForm.reset();
-      // })
-      // .catch((e) => {
-      //   this.snackbarService.open('error creating data...', 'warn'),
-      //     console.log('error creating data...', e);
-      // });
+    this.show();
+    this.setCategory();
   }
 
-setList():void{
-  getDocs(collection(this.fire, 'Vocabulary'))
-  .then(d => {
+  async createVoca(data: Vocabulary) {
+    await this.apiService.createVocabulary(data);
+  }
 
-    d.forEach(p => {
-      this.datas.push(p.data() as Vocabulary);
-    })
+  show(): void {
+    onSnapshot(collection(this.fire, DbCollection.Vocabulary),
+      (d) => {
+        this.datas = [];
+        d.forEach(doc => {
+          const docData = doc.data();
+          docData.id = doc.id;
+          this.datas.push(docData as Vocabulary);
+          // console.log('dockData',docData);
+        })
+        this.changeDetectorRef.detectChanges();
+      })
+  }
 
-    this.changeDetectorRef.detectChanges();
-  })
-  .catch(er => console.log(er))
-}
+  setCategory() {
+    onSnapshot(collection(this.fire, DbCollection.Category),
+      (d) => {
+        this.categoryList = [];
+        d.forEach(doc => {
+          const docData = doc.data() as Category;
+          if (docData.item.length !== 0) {
+            docData.item.forEach((p)=>{
+              this.categoryList.push(p);
+            })
+          }
+        })
+        this.changeDetectorRef.detectChanges();
+      })
+  }
   ngOnDestroy() {
-   
+
   }
 }

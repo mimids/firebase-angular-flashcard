@@ -5,6 +5,7 @@ import { CardComponent } from './card/card.component';
 import { CategoryComponent } from './category/category.component';
 import { SharedModule } from '../shard/shard.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA,  NO_ERRORS_SCHEMA} from '@angular/core';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   { path: '', component: VocabularyComponent },
@@ -14,7 +15,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [VocabularyComponent, CardComponent, CategoryComponent],
+  declarations: [VocabularyComponent, CardComponent, CategoryComponent, EditComponent],
   imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
 })

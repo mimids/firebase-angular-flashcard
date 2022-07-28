@@ -3,8 +3,7 @@
   <h2>Category</h2>
   <table>
     <tr>
-
-      <th colspan="3"><button mat-button color="accent" (click)="setCategory()">Add Category</button>
+      <th colspan="3"><button mat-button color="accent" (click)="setCategory()">Add Category  <mat-icon>add_circle_outline</mat-icon></button>
       </th>
     </tr>
     <ng-container *ngFor="let x of categorys; index as key">
@@ -13,7 +12,7 @@
           {{ x.category }}
         </th>
         <th>
-          <button mat-button color="accent" (click)="setItem(x.category)"><mat-icon>add_circle_outline</mat-icon></button>
+          <button mat-button color="accent" (click)="setItem(x.category)">Add Item <mat-icon>add_circle_outline</mat-icon></button>
         </th>
         <th> <button mat-button color="accent" (click)="deleteCategory(x.category)"><mat-icon>close</mat-icon></button></th>
       </tr>

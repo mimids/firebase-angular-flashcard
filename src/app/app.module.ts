@@ -40,7 +40,7 @@ export const routes: Routes = [
   {
     path: 'list',
     loadChildren: () =>
-      import('./flashcard-list/flashcard-list.module').then((m) => m.FlashcardListModule),
+      import('./vocabulary-list/vocabulary-list.module').then((m) => m.FlashcardListModule),
   },
   {
     path: 'flashcard',

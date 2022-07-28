@@ -11,6 +11,7 @@ import {
 } from '@angular/fire/firestore';
 import { Account } from '../core/models/user.model';
 import { Category, Vocabulary } from '../interfaces/card';
+import { DbCollection } from '../interfaces/firebase';
 import { UUidService } from './uuid.service';
 
 @Injectable({
@@ -28,28 +29,28 @@ export class ApiService {
     return await getDoc(uDoc);
   }
 
-  CreateVocabulary(voca: Vocabulary) {
-    const uDoc = doc(this.fire, 'Vocabulary', this.uid.generateUUID());
+  createVocabulary(voca: Vocabulary) {
+    const uDoc = doc(this.fire, DbCollection.Vocabulary, this.uid.generateUUID());
     setDoc(uDoc, voca, { merge: true });
   }
 
   createCategory(data: Category) {
-    const cateRef = collection(this.fire, 'Category');
+    const cateRef = collection(this.fire, DbCollection.Category);
     setDoc(doc(cateRef, data.category), data, { merge: true });
   }
   async createItem(category: string, item: string[],result:string){
-    const docRef = doc(this.fire, "Category", category);
+    const docRef = doc(this.fire, DbCollection.Category, category);
     item.push(result);
     await updateDoc(docRef, {item:item});
   }
 
   async deleteCategory(category: string){
-    const docRef = doc(this.fire, "Category", category);
+    const docRef = doc(this.fire, DbCollection.Category, category);
     await deleteDoc(docRef);
   }
 
   async deleteItem(category: string, item: string[]){
-    const docRef = doc(this.fire, "Category", category);
+    const docRef = doc(this.fire, DbCollection.Category, category);
     await updateDoc(docRef, {item:item});
   }
 

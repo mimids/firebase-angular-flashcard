@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injectable, OnInit } from '@angular/core';
-import { Firestore, getDocs, getDoc, collection, doc, setDoc, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, getDocs, getDoc, collection, doc, setDoc, deleteDoc, onSnapshot } from '@angular/fire/firestore';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCategoryComponent } from 'src/app/shard/components/dialog-category/dialog-category.component';
 import { Category } from 'src/app/interfaces/card';
+import { DbCollection } from 'src/app/interfaces/firebase';
 
 @Component({
   selector: 'app-category',
@@ -24,15 +25,16 @@ export class CategoryComponent {
     this.show()
   }
   show() {
-    this.categorys = [];
-    getDocs(collection(this.fire, 'Category'))
-      .then(d => {
-        d.forEach(p => {
-          this.categorys.push(p.data() as Category);
+    onSnapshot(collection(this.fire, DbCollection.Category),
+    (d)  => {
+      this.categorys = [];
+        d.forEach(doc => {
+          const docData=doc.data();
+          docData.id=doc.id;
+          this.categorys.push(docData as Category);
         })
         this.changeDetectorRef.detectChanges();
       })
-      .catch(er => console.log(er))
   }
 
   setCategory(): void {
@@ -43,7 +45,6 @@ export class CategoryComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog category was closed', result);
       this.addCategory(result);
-      this.show();
     });
   }
 
@@ -57,7 +58,6 @@ export class CategoryComponent {
       this.categorys.forEach(async element => {
         if (element.category === category) {
           await this.apiService.createItem(category,element.item,result );
-          this.show();
         }
       })
     });
@@ -68,7 +68,6 @@ export class CategoryComponent {
       if (element.category === category) {
         element.item.splice(no, 1);
         await this.apiService.deleteItem(category, element.item);
-        this.show();
       }
     })
   }
@@ -84,7 +83,6 @@ export class CategoryComponent {
 
   async deleteCategory(category: string) {
     await this.apiService.deleteCategory(category);
-    this.show();
   }
 }
 

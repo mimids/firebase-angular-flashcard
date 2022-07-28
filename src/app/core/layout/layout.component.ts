@@ -89,29 +89,32 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
         icon: 'home',
       },
       {
-        name: $localize`:@@flashcard:Card List`,
-        path: 'list',
-        icon: 'list',
-      },
-      {
         name: $localize`:@@flashcard:Flash Card`,
         path: 'flashcard',
         icon: 'book',
       },
+
       {
-        name: $localize`:@@admin:Vocabulary`,
+        name: $localize`:@@admin:Add Category`,
+        path: 'admin/category',
+        icon: 'toc',
+      },
+      {
+        name: $localize`:@@admin:Edit Flash Card`,
+        path: 'admin/edit',
+        icon: 'adb',
+      },
+
+      {
+        name: $localize`:@@admin:Add Vocabulary`,
         path: 'admin/vocabulary',
         icon: 'add_to_photos',
       },
+
       {
-        name: $localize`:@@admin:Card`,
-        path: 'admin/card',
-        icon: 'adb',
-      },
-      {
-        name: $localize`:@@admin:Category`,
-        path: 'admin/category',
-        icon: 'toc',
+        name: $localize`:@@flashcard:Vocabulary List`,
+        path: 'list',
+        icon: 'list',
       },
     ];
 

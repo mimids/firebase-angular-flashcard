@@ -4,11 +4,11 @@ import { ApiService } from 'src/app/services/api.service';
 import { Firestore, getDocs, getDoc, collection, doc } from '@angular/fire/firestore';
 
 @Component({
-  selector: 'app-flashcard-list',
-  templateUrl: './flashcard-list.component.html',
-  styleUrls: ['./flashcard-list.component.scss'],
+  selector: 'app-vocabulary-list',
+  templateUrl: './vocabulary-list.component.html',
+  styleUrls: ['./vocabulary-list.component.scss'],
 })
-export class FlashcardListComponent implements OnInit {
+export class VocabularyListComponent implements OnInit {
   datas : Vocabulary[]  = [];
 
   constructor(
