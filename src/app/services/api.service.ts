@@ -8,6 +8,8 @@ import {
   setDoc,
   deleteDoc,
   updateDoc,
+  query,
+  where,
 } from '@angular/fire/firestore';
 import { Account } from '../core/models/user.model';
 import { Category, FlashCard, FlashCardList, Vocabulary } from '../interfaces/card';
@@ -84,6 +86,27 @@ export class ApiService {
   async deleteItem(category: string, item: string[]) {
     const docRef = doc(this.fire, DbCollection.Categorys, category);
     await updateDoc(docRef, { item: item });
+  }
+
+  async updateFlashcard(cardid:string, isRight: boolean) {
+
+    const docRef = doc(this.fire, DbCollection.FlashCards, cardid);
+    await updateDoc(docRef, { isRight: isRight });
+  }
+
+  async resetFlashcard(uid:string) {
+    const q = query(collection(this.fire, DbCollection.FlashCards), where('uid','==', uid));
+
+    getDocs(q)
+    .then(d => {
+      d.forEach(async d => {
+        const docData = d.data();
+        const docRef = doc(this.fire, DbCollection.FlashCards, d.id);
+        await updateDoc(docRef, { isRight: false });
+      })
+    })
+    .catch(er => console.log(er))
+  
   }
 
 }

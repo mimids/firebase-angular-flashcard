@@ -3,12 +3,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { onSnapshot, query, where, collection, Firestore, setDoc, getDocs, doc, getDoc } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Category, CommonWord } from 'src/app/interfaces/card';
+import { CommonWord } from 'src/app/interfaces/card';
 import { FlashCard } from 'src/app/interfaces/card';
 import { DbCollection } from 'src/app/interfaces/firebase';
 import { ApiService } from 'src/app/services/api.service';
 import { CategoryService } from 'src/app/services/category.service';
-import { Vocabulary } from 'out/ng-flash-card-front-linux-x64/resources/app/src/app/interfaces/card';
+import { Vocabulary } from 'src/app/interfaces/card';
 
 @Component({
   selector: 'app-flashcard-edit',

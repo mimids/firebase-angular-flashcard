@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { Firestore, getDocs, getDoc, collection, doc } from '@angular/fire/firestore';
-import { Vocabulary } from '../interfaces/card';
+import { onSnapshot, query, where, collection, Firestore, setDoc, getDocs, doc, getDoc } from '@angular/fire/firestore';
+import { FlashCard, FlashCardList, Vocabulary } from '../interfaces/card';
 import { DbCollection } from '../interfaces/firebase';
 import { ApiService } from '../services/api.service';
 
@@ -10,30 +10,56 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./flashcard.component.scss']
 })
 export class FlashcardComponent implements OnInit {
-  datas : Vocabulary[]  = [];
+  datas: FlashCard[] = [];
   @Input()
-  card!: Vocabulary;
-
+  card!: FlashCard;
+  flashcardlist: FlashCardList[] = [];
+  selectedFlashCard:string='';
+  uid:string='';
   constructor(
     private fire: Firestore,
-    private api: ApiService,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private apiService: ApiService,
   ) { }
 
   ngOnInit(): void {
-    getDocs(collection(this.fire, DbCollection.Vocabularys))
-    .then(d => {
-      d.forEach(p => {
-        this.datas.push(p.data() as Vocabulary);
+    this.show();
+  }
+
+  show() {
+    onSnapshot(collection(this.fire, DbCollection.FlashCardList),
+      (d) => {
+        this.flashcardlist = [];
+        d.forEach(doc => {
+          const docData = doc.data();
+          docData.id = doc.id;
+          this.flashcardlist.push(docData as FlashCardList);
+        })
+        this.changeDetectorRef.detectChanges();
       })
-      console.log('dd',this.datas);
+  }
+
+  async setFlashcard(uid: string) {
+this.uid=uid;
+    const q = query(collection(this.fire, DbCollection.FlashCards), where('uid','==', uid),where('isRight','==', (null || false)));
+    onSnapshot(q,d => {
+      this.datas=[];
+      d.forEach(doc => {
+
+        const docData = doc.data();
+        docData.id = doc.id;
+        this.datas.push(docData as FlashCard);
+      })
       this.changeDetectorRef.detectChanges();
     })
-    .catch(er => console.log(er))
-}
+  }
 
-  delete(){}
-  reset(){}
-  saveAnswer(event:Event){}
+
+  reset() {
+    this.apiService.resetFlashcard(this.uid);
+   }
+  saveAnswer(event: {id:string,isRight:boolean}) { 
+    this.apiService.updateFlashcard(event.id, event.isRight);
+  }
 
 }

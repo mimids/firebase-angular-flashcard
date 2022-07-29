@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Vocabulary } from 'src/app/interfaces/card';
-import { ApiService } from 'src/app/services/api.service';
+import { FlashCard } from 'src/app/interfaces/card';
 
 @Component({
   selector: 'app-flashcard-contents',
@@ -10,14 +9,12 @@ import { ApiService } from 'src/app/services/api.service';
 export class FlashcardContentsComponent implements OnInit {
 
   @Input()
-  card!: Vocabulary;
+  card!: FlashCard;
 @Output() answer = new EventEmitter;
 
   showAnswer = false;
 
   constructor(
-    private readonly changeDetectorRef: ChangeDetectorRef,
-    private api: ApiService,
 
   ) { }
 
@@ -32,7 +29,7 @@ export class FlashcardContentsComponent implements OnInit {
   }
   setAnswer(isRight : boolean){
 
-    this.answer.emit({ card : this.card, isRight : isRight})
+    this.answer.emit({ id : this.card.id, isRight : isRight})
 
     // this.api
     // .UpdateCard( this.card.id as string)
