@@ -8,11 +8,11 @@
       <mat-select formControlName="categorys" multiple>
         <mat-select-trigger>
           {{formVoca.get('categorys')?.value}}
-          <span *ngIf="(formVoca.get('categorys')?.value.length || 0) > 1" class="categorylist">
+          <span *ngIf="(formVoca.get('categorys')?.value.length || 0) > 1" class="selectlist">
             (+{{(formVoca.get('categorys')?.value.length || 0) - 1}} {{formVoca.get('categorys')?.value.length === 2 ? 'other' : 'others'}})
           </span>
         </mat-select-trigger>
-        <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+        <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}</mat-option>
       </mat-select>
     </mat-form-field>
     

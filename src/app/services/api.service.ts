@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
 import {
   Firestore,
   getDocs,
@@ -48,15 +47,15 @@ export class ApiService {
     const account=this.localStorageService.getItemInStorage('account') as Account;
     if (account.uid !==  undefined) {
       const data: FlashCardList = { name: name, uid: account.uid }
-      console.log('data', data);
       await setDoc(uDoc, data, { merge: true });
     }
   }
 
-  createCategory(data: Category) {
+  async createCategory(data: Category) {
     const cateRef = collection(this.fire, DbCollection.Category);
-    setDoc(doc(cateRef, data.category), data, { merge: true });
+    await setDoc(doc(cateRef, data.category), data, { merge: true });
   }
+
   async createItem(category: string, item: string[], result: string) {
     const docRef = doc(this.fire, DbCollection.Category, category);
     item.push(result);

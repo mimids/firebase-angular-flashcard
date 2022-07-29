@@ -19,7 +19,6 @@ export class FlachcardListComponent implements OnInit {
     private apiService: ApiService,
     public dialog: MatDialog,
     private readonly changeDetectorRef: ChangeDetectorRef,
-    private uid: UUidService
 
   ) { }
 

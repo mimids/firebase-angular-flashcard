@@ -1,4 +1,3 @@
-import { UUidService } from "../services/uuid.service";
 
 //FlashCards
 export interface FlashCardList{

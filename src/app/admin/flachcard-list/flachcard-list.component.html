@@ -1,19 +1,21 @@
 <div>
-
-    <h2>Flashcard List</h2>
-    <table>
+  <h2>Flashcard List</h2>
+  <table>
+    <tr>
+      <th colspan="3"><button mat-button color="accent" (click)="setFlashcardList()">Add flashcard <mat-icon>
+            add_circle_outline</mat-icon></button>
+      </th>
+    </tr>
+    <ng-container *ngFor="let x of flashcardlist; index as key">
       <tr>
-        <th colspan="3"><button mat-button color="accent" (click)="setFlashcardList()">Add flashcard  <mat-icon>add_circle_outline</mat-icon></button>
+        <th>
+          <a [routerLink]="['edit']" [queryParams]="{id:x.id }">{{ x.name }}</a>
         </th>
+        <th> <button mat-button color="accent" (click)="deleteFlashcardList(x.id)">
+            <mat-icon>close</mat-icon>
+          </button></th>
       </tr>
-      <ng-container *ngFor="let x of flashcardlist; index as key">
-        <tr>
-          <th>
-            {{ x.name }}
-          </th>
-          <th> <button mat-button color="accent" (click)="deleteFlashcardList(x.id)"><mat-icon>close</mat-icon></button></th>
-        </tr>
 
-      </ng-container>
-    </table>
-  </div>
+    </ng-container>
+  </table>
+</div>

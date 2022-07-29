@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { SnackbarService } from '../../services/snackbar.service';
 import { Firestore, getDocs, getDoc, collection, doc, onSnapshot } from '@angular/fire/firestore';
 import { DbCollection } from 'src/app/interfaces/firebase';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-vocabulary',
@@ -14,13 +15,13 @@ import { DbCollection } from 'src/app/interfaces/firebase';
 export class VocabularyComponent implements OnInit {
   public formVoca: FormGroup;
   public datas: Array<Vocabulary> = [];
-  categoryList: string[] = [];
 
   constructor(
     private fire: Firestore,
     private apiService: ApiService,
     private fb: FormBuilder,
     private readonly changeDetectorRef: ChangeDetectorRef,
+    readonly  categoryService: CategoryService
   ) {
     this.formVoca = this.fb.group({
       categorys: new FormControl('', [Validators.required]),
@@ -33,7 +34,6 @@ export class VocabularyComponent implements OnInit {
 
   async ngOnInit() {
     this.show();
-    this.setCategory();
   }
 
   async createVoca(data: Vocabulary) {
@@ -54,21 +54,7 @@ export class VocabularyComponent implements OnInit {
       })
   }
 
-  setCategory() {
-    onSnapshot(collection(this.fire, DbCollection.Category),
-      (d) => {
-        this.categoryList = [];
-        d.forEach(doc => {
-          const docData = doc.data() as Category;
-          if (docData.item.length !== 0) {
-            docData.item.forEach((p)=>{
-              this.categoryList.push(p);
-            })
-          }
-        })
-        this.changeDetectorRef.detectChanges();
-      })
-  }
+
   ngOnDestroy() {
 
   }
