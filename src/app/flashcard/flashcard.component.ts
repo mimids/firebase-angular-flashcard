@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Firestore, getDocs, getDoc, collection, doc } from '@angular/fire/firestore';
 import { Vocabulary } from '../interfaces/card';
+import { DbCollection } from '../interfaces/firebase';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class FlashcardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    getDocs(collection(this.fire, 'Vocabulary'))
+    getDocs(collection(this.fire, DbCollection.Vocabularys))
     .then(d => {
       d.forEach(p => {
         this.datas.push(p.data() as Vocabulary);

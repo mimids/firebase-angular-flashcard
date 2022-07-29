@@ -41,7 +41,7 @@ export class VocabularyComponent implements OnInit {
   }
 
   show(): void {
-    onSnapshot(collection(this.fire, DbCollection.Vocabulary),
+    onSnapshot(collection(this.fire, DbCollection.Vocabularys),
       (d) => {
         this.datas = [];
         d.forEach(doc => {

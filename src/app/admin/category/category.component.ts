@@ -25,7 +25,7 @@ export class CategoryComponent {
     this.show()
   }
   show() {
-    onSnapshot(collection(this.fire, DbCollection.Category),
+    onSnapshot(collection(this.fire, DbCollection.Categorys),
     (d)  => {
       this.categorys = [];
         d.forEach(doc => {

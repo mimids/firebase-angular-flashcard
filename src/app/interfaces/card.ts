@@ -6,9 +6,9 @@ export interface FlashCardList{
     name: string;
 }
 export interface FlashCard{
-    user: string;
+    id? : string;
     name: string;
-    id : number;
+    uid:string
     word?: string | null;
     meaning?: string | null;
     lang_word?: string | null;
@@ -33,3 +33,6 @@ export interface Category{
     item: string[];
 };
 
+export enum CommonWord {
+    ALL='ALL',
+}

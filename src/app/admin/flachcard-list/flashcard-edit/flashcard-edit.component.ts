@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { onSnapshot, query, where, collection, Firestore, setDoc, getDocs } from '@angular/fire/firestore';
+import { onSnapshot, query, where, collection, Firestore, setDoc, getDocs, doc, getDoc } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Category } from 'src/app/interfaces/card';
+import { Category, CommonWord } from 'src/app/interfaces/card';
 import { FlashCard } from 'src/app/interfaces/card';
 import { DbCollection } from 'src/app/interfaces/firebase';
 import { ApiService } from 'src/app/services/api.service';
@@ -18,7 +18,7 @@ import { Vocabulary } from 'out/ng-flash-card-front-linux-x64/resources/app/src/
 export class FlashcardEditComponent implements OnInit {
   public formFlash: FormGroup;
   flashcards: FlashCard[] = [];
-  vocabularys : Vocabulary[]=[];
+  vocabularys: Vocabulary[] = [];
   alphabetList = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'Y', 'Z']
   id = '';
   constructor(
@@ -43,9 +43,12 @@ export class FlashcardEditComponent implements OnInit {
   }
 
   async setVocabulary(data: any) {
-    console.log('data', data);
+    console.log('data', data, data.categorys.indexOf(CommonWord.ALL));
 
-    const q = query(collection(this.fire, DbCollection.Vocabulary), where('categorys', 'array-contains-any', ['west_coast', 'repas']));
+    let q = query(collection(this.fire, DbCollection.Vocabularys));
+    if (data.categorys.indexOf(CommonWord.ALL) === -1 && data.categorys.length !== 0) {
+      q = query(collection(this.fire, DbCollection.Vocabularys), where('categorys', 'array-contains-any', data.categorys));
+    }
     const querySnapshot = await getDocs(q);
 
     this.vocabularys = [];
@@ -55,10 +58,10 @@ export class FlashcardEditComponent implements OnInit {
       this.vocabularys.push(docData as Vocabulary);
     })
     this.changeDetectorRef.detectChanges();
-
   }
+
   show() {
-    const q = query(collection(this.fire, DbCollection.FlashCard), where("uid", "==", this.id));
+    const q = query(collection(this.fire, DbCollection.FlashCards), where("uid", "==", this.id));
     onSnapshot(q,
       (d) => {
         this.flashcards = [];
@@ -71,6 +74,29 @@ export class FlashcardEditComponent implements OnInit {
       })
   }
 
+  async deleteFlashcard(id: string | undefined) {
+    if (id !== undefined) {
+      await this.apiService.deleteFlashcard(id);
+    }
+  }
+  async setFlashcard(idcard: (string | null | undefined)) {
+    console.log('idcard', idcard);
+    if (idcard !== undefined && idcard !== null) {
+
+      const ColleRef = collection(this.fire, DbCollection.Vocabularys);
+
+      const docRef = doc(ColleRef, idcard);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const flashcard = docSnap.data();
+        flashcard.uid = this.id;
+        await this.apiService.createFlashcard(flashcard as FlashCard);
+      } else {
+        console.log("No such document!");
+      }
+    }
+
+  }
 }
 
 

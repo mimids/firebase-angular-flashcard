@@ -1,7 +1,7 @@
 
  export enum DbCollection {
-  Vocabulary = 'Vocabularys',
-  Category = 'Categorys',
-  FlashCard = 'FlashCards',
+  Vocabularys = 'Vocabularys',
+  Categorys = 'Categorys',
+  FlashCards = 'FlashCards',
   FlashCardList = 'FlashCardList'
 }

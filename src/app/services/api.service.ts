@@ -10,7 +10,7 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 import { Account } from '../core/models/user.model';
-import { Category, FlashCardList, Vocabulary } from '../interfaces/card';
+import { Category, FlashCard, FlashCardList, Vocabulary } from '../interfaces/card';
 import { DbCollection } from '../interfaces/firebase';
 import { LocalStorageService } from './local-storage.service';
 import { UUidService } from './uuid.service';
@@ -38,7 +38,7 @@ export class ApiService {
   }
 
   async createVocabulary(voca: Vocabulary) {
-    const uDoc = doc(this.fire, DbCollection.Vocabulary, this.uid.generateUUID());
+    const uDoc = doc(this.fire, DbCollection.Vocabularys, this.uid.generateUUID());
     await setDoc(uDoc, voca, { merge: true });
   }
 
@@ -50,14 +50,19 @@ export class ApiService {
       await setDoc(uDoc, data, { merge: true });
     }
   }
+  async createFlashcard(data: FlashCard) {
+    const uDoc = doc(this.fire, DbCollection.FlashCardList, this.uid.generateUUID());
+    const Ref = collection(this.fire, DbCollection.FlashCards);
+    await setDoc(doc(Ref), data, { merge: true });
+  }
 
   async createCategory(data: Category) {
-    const cateRef = collection(this.fire, DbCollection.Category);
+    const cateRef = collection(this.fire, DbCollection.Categorys);
     await setDoc(doc(cateRef, data.category), data, { merge: true });
   }
 
   async createItem(category: string, item: string[], result: string) {
-    const docRef = doc(this.fire, DbCollection.Category, category);
+    const docRef = doc(this.fire, DbCollection.Categorys, category);
     item.push(result);
     await updateDoc(docRef, { item: item });
   }
@@ -66,14 +71,18 @@ export class ApiService {
     const docRef = doc(this.fire, DbCollection.FlashCardList, id);
     await deleteDoc(docRef);
   }
+  async deleteFlashcard(id: string) {
+    const docRef = doc(this.fire, DbCollection.FlashCards, id);
+    await deleteDoc(docRef);
+  }
 
   async deleteCategory(category: string) {
-    const docRef = doc(this.fire, DbCollection.Category, category);
+    const docRef = doc(this.fire, DbCollection.Categorys, category);
     await deleteDoc(docRef);
   }
 
   async deleteItem(category: string, item: string[]) {
-    const docRef = doc(this.fire, DbCollection.Category, category);
+    const docRef = doc(this.fire, DbCollection.Categorys, category);
     await updateDoc(docRef, { item: item });
   }
 

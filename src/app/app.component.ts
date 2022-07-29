@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { onSnapshot,query, where, collection, Firestore } from '@angular/fire/firestore';
-import { Category } from './interfaces/card';
+import { Category, CommonWord } from './interfaces/card';
 import { DbCollection } from './interfaces/firebase';
 import { CategoryService } from './services/category.service';
 
@@ -20,9 +20,9 @@ export class AppComponent {
   }
 
   setCategory() {
-    onSnapshot(collection(this.fire, DbCollection.Category),
+    onSnapshot(collection(this.fire, DbCollection.Categorys),
       (d) => {
-        this.categoryService.categoryList = [];
+        this.categoryService.categoryList = [CommonWord.ALL];
         d.forEach(doc => {
           const docData = doc.data() as Category;
           if (docData.item.length !== 0) {

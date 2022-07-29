@@ -14,26 +14,17 @@
       <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}</mat-option>
     </mat-select>
 </mat-form-field>
-<mat-form-field appearance="fill">
-    <mat-label>Alphabet</mat-label>
-    <mat-select formControlName="alphabets" multiple>
-      <mat-select-trigger>
-        {{formFlash.get('alphabets')?.value}}
-        <span *ngIf="(formFlash.get('alphabets')?.value.length || 0) > 1" class="selectlist">
-          (+{{(formFlash.get('alphabets')?.value.length || 0) - 1}} {{formFlash.get('alphabets')?.value.length === 2 ? 'other' : 'others'}})
-        </span>
-      </mat-select-trigger>
-      <mat-option *ngFor="let alphabet of alphabetList" [value]="alphabet">{{alphabet}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+
   <button mat-raised-button class="icon-after rounded" color="accent" type="submit"> <span i18n>Search </span>
     <mat-icon>send</mat-icon>
   </button>
 </form>
 
 <mat-divider></mat-divider>
-<h2>Vocabularys</h2>
-<div *ngFor="let data of vocabularys" class="list">
+<div class="flex-row">
+  <div class="flex-column">
+    <table *ngFor="let data of flashcards">
+      <tr><td>
 <mat-card class="card">
   <mat-card-title>{{ data.word }} ({{ data.lang_word }})</mat-card-title>
     <mat-card-subtitle i18n>Meaning ({{ data.lang_meaning }})</mat-card-subtitle>
@@ -41,7 +32,22 @@
     <p>{{ data.meaning }}</p>
   </mat-card-content>
 </mat-card>
+</td><td> <button mat-button color="accent" (click)="deleteFlashcard(data.id)"><mat-icon>close</mat-icon></button></td></tr>
+</table>
+</div>
+<div class="flex-column">
+<div *ngFor="let data of vocabularys">
+  <a (click)="setFlashcard(data.id)">
+<mat-card class="card">
+  <mat-card-title>{{ data.word }} ({{ data.lang_word }})</mat-card-title>
+    <mat-card-subtitle i18n>Meaning ({{ data.lang_meaning }})</mat-card-subtitle>
+  <mat-card-content>
+    <p>{{ data.meaning }}</p>
+  </mat-card-content>
+</mat-card>
+</a>
+</div>
+</div>
 </div>
 
-<mat-divider></mat-divider>
   </div>

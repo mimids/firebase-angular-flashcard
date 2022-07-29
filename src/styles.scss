@@ -4,7 +4,17 @@
 html, body { height: 100%; }
 
 
+.flex-column{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 
+.flex-row{
+  display: flex;
+  justify-content:space-around;
+  flex-direction: row;
+}
 
 $palette-light-primary: mat.define-palette(mat.$grey-palette, 200, 100, 900);
 $palette-light-accent: mat.define-palette(mat.$light-blue-palette, 800, 100, 900);
