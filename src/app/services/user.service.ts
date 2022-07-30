@@ -5,7 +5,7 @@ import { Observable, of, ReplaySubject } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 
 import { environment } from '../..//environments/environment';
-import { Account, Upload } from '../core/models/user.model';
+import { Account, Upload } from '../interfaces/user';
 
 import { LocalStorageService } from './local-storage.service';
 

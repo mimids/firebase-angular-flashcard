@@ -11,9 +11,10 @@ import {
   query,
   where,
 } from '@angular/fire/firestore';
-import { Account } from '../core/models/user.model';
+import { Account } from '../interfaces/user';
 import { Category, FlashCard, FlashCardList, Vocabulary } from '../interfaces/card';
 import { DbCollection } from '../interfaces/firebase';
+import { UserI } from '../interfaces/user';
 import { LocalStorageService } from './local-storage.service';
 import { UUidService } from './uuid.service';
 
@@ -31,11 +32,11 @@ export class ApiService {
 
   async setFireUsers(user: Account) {
     this.userUid!=user.uid;
-    const uDoc = doc(this.fire, 'users', user.uid!);
+    const uDoc = doc(this.fire, DbCollection.Users, user.uid!);
     await setDoc(uDoc, user, { merge: true });
   }
   async getFireUser(uid: string) {
-    const uDoc = doc(this.fire, 'users', uid);
+    const uDoc = doc(this.fire,  DbCollection.Users, uid);
     return await getDoc(uDoc);
   }
 
@@ -107,6 +108,10 @@ export class ApiService {
     })
     .catch(er => console.log(er))
   
+  }
+  async createUser(user:Account) {
+    const cateRef = collection(this.fire, DbCollection.Users);
+    await setDoc(doc(cateRef), user, { merge: true });
   }
 
 }

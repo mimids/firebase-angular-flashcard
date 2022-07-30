@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
-import { Account } from '../../models/user.model';
+import { Account } from '../../../interfaces/user';
 
 @Component({
   selector: 'app-layout-nav',

@@ -14,7 +14,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
-import { Account } from '../../models/user.model';
+import { Account } from '../../../interfaces/user';
 import { SnackbarService } from '../../../services/snackbar.service';
 import { ThemeService } from '../../../services/theme.service';
 import { UserService } from '../../../services/user.service';

@@ -13,7 +13,7 @@ import { Observable, Subject, Subscription } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { Account } from '../models/user.model';
+import { Account } from '../../interfaces/user';
 import { ThemeService } from '../../services/theme.service';
 import { UserService } from '../../services/user.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
