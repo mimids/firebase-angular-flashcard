@@ -32,16 +32,7 @@ export enum Role {
     }
 
     export interface Upload {
-      /**
-       * File path, must be prefixed by server host
-       * @example 'uploads/public/uuid.jpg'
-       */
       path: string;
-    
-      /**
-       * Resized file path, must be prefixed by server host
-       * @example 'uploads/public/uuid-thumb.jpg'
-       */
       thumbPath: string;
     }
     

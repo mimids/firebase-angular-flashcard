@@ -24,6 +24,14 @@ import { Auth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut 
 import { AuthService } from 'src/app/services/auth.service';
 import { ApiService } from 'src/app/services/api.service';
 import { UserService } from 'src/app/services/user.service';
+import {
+  getStorage,
+  ref,
+  listAll
+} from "firebase/storage";
+import { getApp } from '@angular/fire/app';
+
+
 
 @Component({
   selector: 'app-compte',
@@ -46,7 +54,7 @@ export class CompteComponent implements OnInit {
   constructor(
     public auth:AuthService,
     private authFire:Auth,
-    private api: ApiService,
+    private apiService: ApiService,
     private readonly formBuilder: FormBuilder,
     private readonly router: Router,
     private readonly snackbarService: SnackbarService,
@@ -57,7 +65,16 @@ export class CompteComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {}
+  ngOnInit(
+   
+
+  ): void {
+    const firebaseApp = getApp();
+    const storage = getStorage(firebaseApp, "gs://flashcard-c24ef.appspot.com");
+
+    const storageRef = ref(storage);
+
+  }
 
   ngOnDestroy(): void {
     this.isDestroyed$.next(true);
@@ -65,7 +82,6 @@ export class CompteComponent implements OnInit {
   }
 
   onSubmit():void {
-    this.isLoading = true;
     this.formGroup.disable();
     this.isPasswordHidden = true;
     this.auth.user.firstName = this.f.firstName?.value as string;
@@ -78,8 +94,7 @@ export class CompteComponent implements OnInit {
       .then(u =>{
       console.log(u);
       this.auth.user.uid=u.user.uid;
-      this.api.setFireUsers(this.auth.user);
-      this.isLoading = false;
+      this.apiService.setFireUsers(this.auth.user);
       this.userService.update(this.auth.user, u.user.uid);
       this.router.navigate(['/']);
       }).catch(err => {
@@ -88,32 +103,9 @@ export class CompteComponent implements OnInit {
         this.errorMessage = (err as ApiError).message;
         this.isLoading = false;
     })
-
-
-
-    // return this.authService
-    //   .register$({
-    //     firstName: this.f.firstName?.value as string,
-    //     lastName: this.f.lastName?.value as string,
-    //     email: this.f.email?.value as string,
-    //     password: this.f.password?.value as string,
-    //   })
-    //   .pipe(
-    //     switchMap((res) =>
-    //       this.dialog.open(ConfirmEmailDialogComponent).afterClosed(),
-    //     ),
-    //     takeUntil(this.isDestroyed$),
-    //   )
-    //   .subscribe(
-    //     (afterClosed) => this.router.navigate(['/']),
-    //     (err) => {
-    //       this.errorHappens.emit((err as ApiError).message);
-    //       this.errorMessage = (err as ApiError).message;
-    //       this.isLoading = false;
-    //       this.formGroup.enable();
-    //     },
-    //   );
   }
+
+
 
   onCloseDialog(): Promise<boolean> {
     this.dialog.closeAll();
@@ -165,3 +157,7 @@ export class CompteComponent implements OnInit {
     };
   }
 }
+function getFileList() {
+  throw new Error('Function not implemented.');
+}
+

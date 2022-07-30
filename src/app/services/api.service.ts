@@ -32,8 +32,10 @@ export class ApiService {
 
   async setFireUsers(user: Account) {
     this.userUid!=user.uid;
+    const u =user;
+    u.password='';
     const uDoc = doc(this.fire, DbCollection.Users, user.uid!);
-    await setDoc(uDoc, user, { merge: true });
+    await setDoc(uDoc, u, { merge: true });
   }
   async getFireUser(uid: string) {
     const uDoc = doc(this.fire,  DbCollection.Users, uid);
