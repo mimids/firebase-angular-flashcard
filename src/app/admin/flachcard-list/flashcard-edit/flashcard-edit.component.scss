@@ -3,8 +3,12 @@
     font-size: 0.75em;
 }
 
-
-
 mat-card {
     background-color: dimgray;
+}
+
+section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

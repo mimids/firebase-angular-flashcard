@@ -13,7 +13,7 @@ export interface FlashCard{
     meaning?: string | null;
     lang_word?: string | null;
     lang_meaning?: string | null;
-    category?: string[];
+    categorys?: string[];
     isRight?: boolean | null;
 }
 
@@ -24,7 +24,7 @@ export interface Vocabulary{
     meaning?: string | null;
     lang_word?: string | null;
     lang_meaning?: string | null;
-    category?: string[];
+    categorys?: string[];
 
 };
 //Category

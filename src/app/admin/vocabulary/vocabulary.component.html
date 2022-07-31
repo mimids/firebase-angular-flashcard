@@ -1,52 +1,75 @@
 <section>
 
-  <h2>Vocabulaly</h2>
+  <h2 i18n>Vocabulaly</h2>
+  <h4 i18n>Enter the word in the editor and SUBMIT.</h4>
+  <h4 i18n> A card will be added.</h4>
+  <form autocomplete="off" [formGroup]="formVoca" (ngSubmit)="createVoca(formVoca.value)" class="flex-column">
 
-  <form autocomplete="off" [formGroup]="formVoca" (ngSubmit)="createVoca(formVoca.value)" class="flex-column" >
-    <mat-form-field appearance="fill">
-      <mat-label>Category</mat-label>
-      <mat-select formControlName="categorys" multiple>
-        <mat-select-trigger>
-          {{formVoca.get('categorys')?.value}}
-          <span *ngIf="(formVoca.get('categorys')?.value.length || 0) > 1" class="selectlist">
-            (+{{(formVoca.get('categorys')?.value.length || 0) - 1}} {{formVoca.get('categorys')?.value.length === 2 ? 'other' : 'others'}})
-          </span>
-        </mat-select-trigger>
-        <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    
-   
-    <mat-form-field appearance="outline" color="accent" class="form-field">
-      <label i18n>Word </label>
-      <input matInput type="text" formControlName="word" autocomplete="off" />
 
-      <mat-divider></mat-divider>
+    <div class="flex-row">
 
-      <label i18n>Language </label>
-      <mat-select formControlName="lang_word">
-        <mat-option value="fr" i18n>Franch</mat-option>
-        <mat-option value="en" i18n>English</mat-option>
-        <mat-option value="jp" i18n>Japanise</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <div class="flex-column">
+        <mat-form-field appearance="fill">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="categorys" multiple>
+            <mat-select-trigger>
+              {{formVoca.get('categorys')?.value}}
+              <span *ngIf="(formVoca.get('categorys')?.value.length || 0) > 1" class="selectlist">
+                (+{{(formVoca.get('categorys')?.value.length || 0) - 1}} {{formVoca.get('categorys')?.value.length === 2
+                ?
+                'other' : 'others'}})
+              </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="accent" class="form-field">
+          <mat-label i18n>Word </mat-label>
+          <input matInput type="text" formControlName="word" autocomplete="off" />
 
-    <mat-form-field appearance="outline" color="accent" class="form-field">
-      <label>Meaning </label>
-      <textarea matInput type="text" formControlName="meaning" autocomplete="off" cols="30" rows="10"></textarea>
-      <mat-divider></mat-divider>
-      <label i18n>Language</label>
-      <mat-select formControlName="lang_meaning">
-        <mat-option value="fr" i18n>Franch</mat-option>
-        <mat-option value="en" i18n>English</mat-option>
-        <mat-option value="jp" i18n>Japanise</mat-option>
-      </mat-select>
-    </mat-form-field>
+          <mat-radio-group formControlName="lang_word">
+            <mat-radio-button value="fr" i18n checked="true" >Franch</mat-radio-button>
+            <mat-radio-button value="en" i18n>English</mat-radio-button>
+          </mat-radio-group>
+        </mat-form-field>
 
-    <button mat-raised-button class="icon-after rounded"  color="accent" type="submit"> <span i18n>Submit</span>
-      <mat-icon>send</mat-icon>
-    </button>
+        <mat-form-field appearance="outline" color="accent" class="form-field">
+          <mat-label>Meaning </mat-label>
+          <textarea matInput type="text" formControlName="meaning" autocomplete="off" cols="30" rows="10"></textarea>
+          <mat-radio-group formControlName="lang_meaning">
+            <mat-radio-button value="fr" i18n>Franch</mat-radio-button>
+            <mat-radio-button value="en" checked="true" i18n>English</mat-radio-button>
+          </mat-radio-group>
+        </mat-form-field>
+
+        <button mat-raised-button class="icon-after rounded" color="accent" type="submit"> <span i18n>Submit</span>
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+      <div class="flex-column">
+        <table *ngFor="let data of vocabularys">
+          <tr>
+            <td style="width:90%">
+              <mat-card class="card">
+                <mat-card-title>{{ data.word }} ({{ data.lang_word }}) </mat-card-title>
+                <mat-card-subtitle i18n>categorys [ {{ data.categorys }} ]</mat-card-subtitle>
+                <mat-card-content>
+                  <p>({{ data.lang_meaning }})</p>
+                  <p>{{ data.meaning }}</p>
+                </mat-card-content>
+              </mat-card>
+            </td>
+            <td style="width:10%"> 
+              <a [routerLink]="['/admin/vocabulary/vocabulary-edit']" [queryParams]="{id: data.id}">
+               edit
+              </a>
+              <button mat-button color="accent" (click)="deleteVocabulary(data.id)">
+                <mat-icon>close</mat-icon>
+              </button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </form>
-
-
 </section>

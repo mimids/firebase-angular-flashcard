@@ -1,9 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Category, Vocabulary } from 'src/app/interfaces/card';
+import { Category, FlashCard, Vocabulary } from 'src/app/interfaces/card';
 import { ApiService } from 'src/app/services/api.service';
-import { SnackbarService } from '../../services/snackbar.service';
-import { Firestore, getDocs, getDoc, collection, doc, onSnapshot } from '@angular/fire/firestore';
+import { Firestore, getDocs, getDoc, collection, doc, onSnapshot, where, query } from '@angular/fire/firestore';
 import { DbCollection } from 'src/app/interfaces/firebase';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -14,7 +13,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class VocabularyComponent implements OnInit {
   public formVoca: FormGroup;
-  public datas: Array<Vocabulary> = [];
+  public vocabularys: Vocabulary[]=[];
 
   constructor(
     private fire: Firestore,
@@ -37,24 +36,31 @@ export class VocabularyComponent implements OnInit {
   }
 
   async createVoca(data: Vocabulary) {
+    console.log('this.formVoca.get',this.formVoca.get('categorys')?.value);
+    
+    if(data.word!='' && data.meaning !='' && data.lang_meaning !='' && data.lang_word!=''){
     await this.apiService.createVocabulary(data);
+    }
   }
 
   show(): void {
-    onSnapshot(collection(this.fire, DbCollection.Vocabularys),
+          onSnapshot(query(collection(this.fire, DbCollection.Vocabularys)),
       (d) => {
-        this.datas = [];
+        this.vocabularys = [];
         d.forEach(doc => {
           const docData = doc.data();
           docData.id = doc.id;
-          this.datas.push(docData as Vocabulary);
-          // console.log('dockData',docData);
+          this.vocabularys.push(docData as Vocabulary);
         })
         this.changeDetectorRef.detectChanges();
       })
   }
 
-
+  async deleteVocabulary(id: string | undefined | null){
+    if (id !== undefined && id !== null) {
+      await this.apiService.deleteVocabulary(id);
+    }
+  }
   ngOnDestroy() {
 
   }

@@ -1,3 +1,8 @@
+:host {
+    text-align: center;
+    margin: 0 auto;
+
+}
 .selectlist{
     opacity: 0.75;
     font-size: 0.75em;
@@ -13,12 +18,13 @@ section {
 }
 
 .form-field {
-    width: 90%;
+    width: 100%;
 }
+
 select{
     border: 1px solid gray ;
 }
-label{
+mat-label{
     font-size: larger;
     font-weight: bold;
     padding: 10px;
@@ -28,6 +34,7 @@ label{
 input{
     min-height: 50px;
     border: 1px solid gray ;
+    margin: 10px;
 }
 
 textarea{
@@ -45,3 +52,7 @@ button{
     margin-left: 20px;
     margin-bottom: 20px;
 }
+
+.mat-radio-button ~ .mat-radio-button {
+    padding: 2px
+  }

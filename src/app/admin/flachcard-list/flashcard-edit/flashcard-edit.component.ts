@@ -43,8 +43,6 @@ export class FlashcardEditComponent implements OnInit {
   }
 
   async setVocabulary(data: any) {
-    console.log('data', data, data.categorys.indexOf(CommonWord.ALL));
-
     let q = query(collection(this.fire, DbCollection.Vocabularys));
     if (data.categorys.indexOf(CommonWord.ALL) === -1 && data.categorys.length !== 0) {
       q = query(collection(this.fire, DbCollection.Vocabularys), where('categorys', 'array-contains-any', data.categorys));

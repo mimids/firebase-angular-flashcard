@@ -59,8 +59,6 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
   .pipe(
     map(result => result.matches)
   )
-
-
   constructor(
     private readonly metaService: Meta,
     private readonly themeService: ThemeService,
@@ -91,30 +89,22 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
       {
         name: $localize`:@@flashcard:Flash Card`,
         path: 'flashcard',
+        icon: 'toc',
+      },
+      {
+        name: $localize`:@@admin:Edit Category`,
+        path: 'admin/category',
         icon: 'book',
       },
-
       {
-        name: $localize`:@@admin:Add Category`,
-        path: 'admin/category',
-        icon: 'toc',
+        name: $localize`:@@admin:Edit Vocabulary`,
+        path: 'admin/vocabulary',
+        icon: 'add_to_photos',
       },
       {
         name: $localize`:@@admin:Edit Flash Card`,
         path: 'admin/flashcard',
         icon: 'adb',
-      },
-
-      {
-        name: $localize`:@@admin:Add Vocabulary`,
-        path: 'admin/vocabulary',
-        icon: 'add_to_photos',
-      },
-
-      {
-        name: $localize`:@@flashcard:Vocabulary List`,
-        path: 'list',
-        icon: 'list',
       },
     ];
 

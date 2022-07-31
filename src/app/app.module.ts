@@ -1,5 +1,4 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA,  NO_ERRORS_SCHEMA} from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CoreModule } from './core/core.module';
@@ -30,17 +29,10 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
-
   {
     path: 'admin',
     loadChildren: () =>
-    // import('./admin/admin.module').then((m) => m.AdminModule),canActivate:[AdminGuard],canLoad:[AdminGuard]
     import('./admin/admin.module').then((m) => m.AdminModule)
-  },
-  {
-    path: 'list',
-    loadChildren: () =>
-      import('./vocabulary-list/vocabulary-list.module').then((m) => m.FlashcardListModule),
   },
   {
     path: 'flashcard',

@@ -3,7 +3,12 @@
 @include mat.core();
 html, body { height: 100%; }
 
-h2{padding: 10px;}
+h2,h4{padding: 10px;}
+
+.explication{
+  padding: 10px;
+  text-align: center;
+}
 
 .flex-column{
   display: flex;
@@ -11,11 +16,35 @@ h2{padding: 10px;}
   flex-direction: column;
 }
 
+.card{
+  width:100%
+}
 .flex-row{
   display: flex;
   justify-content:space-around;
   flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
+
+table{
+  border-collapse:collapse;
+  margin:0 auto;
+}
+td,th{
+  border:1px solid #ccc;
+  padding:10px;
+}
+
+
+tr:first-child th{
+  border-top:5px solid cadetblue;
+}
+tr:first-child td{
+  border-top:5px solid #ccc;
+}
+
+
 
 $palette-light-primary: mat.define-palette(mat.$grey-palette, 200, 100, 900);
 $palette-light-accent: mat.define-palette(mat.$light-blue-palette, 800, 100, 900);
@@ -100,7 +129,7 @@ $foreground-dark: map-get($theme-dark, foreground);
   .section-home{
     background-image: url('../../../assets/img/back4.jpg');
   }
-  
+
   .section-login{
     background-image: url('../../../assets/img/back2.jpg');
   }

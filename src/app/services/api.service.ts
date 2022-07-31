@@ -14,7 +14,6 @@ import {
 import { Account } from '../interfaces/user';
 import { Category, FlashCard, FlashCardList, Vocabulary } from '../interfaces/card';
 import { DbCollection } from '../interfaces/firebase';
-import { UserI } from '../interfaces/user';
 import { LocalStorageService } from './local-storage.service';
 import { UUidService } from './uuid.service';
 
@@ -91,6 +90,12 @@ export class ApiService {
     await this.deleteRow(DbCollection.Categorys, category);
   }
 
+  async deleteVocabulary(id: string) {
+    console.log('id',id);
+    
+    await this.deleteRow(DbCollection.Vocabularys, id);
+  }
+
   async deleteItem(category: string, item: string[]) {
     const docRef = doc(this.fire, DbCollection.Categorys, category);
     await updateDoc(docRef, { item: item });
@@ -101,7 +106,10 @@ export class ApiService {
     const docRef = doc(this.fire, DbCollection.FlashCards, cardid);
     await updateDoc(docRef, { isRight: isRight });
   }
-
+  async updateVocabulary(id: string, data: Vocabulary) {
+    const docRef = doc(this.fire, DbCollection.Vocabularys,id);
+    await setDoc(docRef,data );
+  }
   //reset
   async resetFlashcard(uid: string) {
     const q = query(collection(this.fire, DbCollection.FlashCards), where('uid', '==', uid));

@@ -20,6 +20,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {CdkTreeModule} from '@angular/cdk/tree';
 import {MatCheckboxModule} from '@angular/material/checkbox'
+import {MatRadioModule} from '@angular/material/radio';
 
 import { ImageDefaultDirective } from './directives/image-default.directive';
 import { ApiPathPipe } from './pipes/api-path.pipe';
@@ -28,7 +29,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 
 const angularModules = [FormsModule, ReactiveFormsModule];
 const materialModules = [
-
+  MatRadioModule,
   MatCheckboxModule,
   MatButtonModule,
   MatCardModule,
@@ -49,8 +50,6 @@ const materialModules = [
   MatTreeModule,
   CdkTreeModule,
   ReactiveFormsModule
-
-
 ];
 const libraryModules = [];
 

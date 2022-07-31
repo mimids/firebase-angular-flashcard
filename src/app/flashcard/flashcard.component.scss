@@ -2,10 +2,10 @@
     text-align: center;
     margin: 0 auto;
 
-    .card-list{
-         display:flex;
-         justify-content: center;
-         flex-direction : column;
- }
-
 }
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }

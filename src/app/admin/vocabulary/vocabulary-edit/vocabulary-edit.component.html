@@ -1,0 +1,48 @@
+<section>
+
+  <h2>Edit Vocabulary</h2>
+  <form autocomplete="off" [formGroup]="formVoca" (ngSubmit)="updateVoca(formVoca.value)" class="flex-column">
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="categorys"  multiple>
+        <mat-select-trigger>
+          {{formVoca.get('categorys')?.value}}
+          <span *ngIf="(formVoca.get('categorys')?.value.length || 0) > 1" class="selectlist">
+            (+{{(formVoca.get('categorys')?.value.length || 0) - 1}} {{formVoca.get('categorys')?.value.length === 2
+            ?
+            'other' : 'others'}})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" color="accent" class="form-field">
+      <div class="flex-column">
+      <mat-label i18n>Word </mat-label>
+      <input matInput type="text" formControlName="word" autocomplete="off" [value]="data.word" />
+
+      <mat-radio-group formControlName="lang_word">
+        <mat-radio-button value="fr" i18n [checked]="data.lang_word=='fr'? true:false">Franch</mat-radio-button>
+        <mat-radio-button value="en" i18n [checked]="data.lang_word=='en'? true:false">English</mat-radio-button>
+      </mat-radio-group>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="accent" class="form-field">
+      <div class="flex-column">
+      <mat-label>Meaning </mat-label>
+      <textarea matInput  formControlName="meaning"  cols="30"
+        rows="10" [value]="data.meaning"> </textarea>
+      <mat-radio-group formControlName="lang_meaning">
+        <mat-radio-button value="fr" [checked]="data.lang_meaning=='fr'? true:false" i18n>Franch</mat-radio-button>
+        <mat-radio-button value="en" [checked]="data.lang_meaning=='en'? true:false" i18n>English</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    </mat-form-field>
+
+    <button mat-raised-button class="icon-after rounded" color="accent" type="submit"> <span i18n>Submit</span>
+      <mat-icon>send</mat-icon>
+    </button>
+  </form>
+</section>

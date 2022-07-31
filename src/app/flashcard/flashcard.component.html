@@ -1,6 +1,6 @@
-<section class="card-list">
-
-  <h4>Choisi one Flashcard</h4>
+<section>
+<h2 il8>Flashcard</h2>
+  <h4 il8>Just choose one from the list below and you're ready to go!</h4>
   <mat-form-field appearance="fill">
     <mat-label>Flashcard</mat-label>
     <mat-select [(ngModel)]="selectedFlashCard" (selectionChange)="setFlashcard(selectedFlashCard)">
@@ -10,7 +10,8 @@
     </mat-select>
   </mat-form-field>
 
-    <h2 il8></h2>
+    <h4 il8>Look at the words and answer what they mean.</h4>
+    <div class="explication">Click on a card and if it is correct, press the correct answer button to make the card disappear. If you want to undo everything, press the RESET button!</div>
   
     <div>
       <div *ngFor="let card of datas">
