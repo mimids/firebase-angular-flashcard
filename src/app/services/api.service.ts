@@ -23,25 +23,27 @@ import { UUidService } from './uuid.service';
 })
 export class ApiService {
 
-  userUid='';
+  userUid = '';
   constructor(
     private fire: Firestore,
     private uid: UUidService,
     private readonly localStorageService: LocalStorageService,
   ) { }
+// for user
 
   async setFireUsers(user: Account) {
-    this.userUid!=user.uid;
-    const u =user;
-    u.password='';
+    this.userUid != user.uid;
+    const u = user;
+    u.password = '';
     const uDoc = doc(this.fire, DbCollection.Users, user.uid!);
     await setDoc(uDoc, u, { merge: true });
   }
   async getFireUser(uid: string) {
-    const uDoc = doc(this.fire,  DbCollection.Users, uid);
+    const uDoc = doc(this.fire, DbCollection.Users, uid);
     return await getDoc(uDoc);
   }
 
+// create
   async createVocabulary(voca: Vocabulary) {
     const uDoc = doc(this.fire, DbCollection.Vocabularys, this.uid.generateUUID());
     await setDoc(uDoc, voca, { merge: true });
@@ -49,14 +51,13 @@ export class ApiService {
 
   async createFlashCardList(name: string) {
     const uDoc = doc(this.fire, DbCollection.FlashCardList, this.uid.generateUUID());
-    const account=this.localStorageService.getItemInStorage('account') as Account;
-    if (account.uid !==  undefined) {
+    const account = this.localStorageService.getItemInStorage('account') as Account;
+    if (account.uid !== undefined) {
       const data: FlashCardList = { name: name, uid: account.uid }
       await setDoc(uDoc, data, { merge: true });
     }
   }
   async createFlashcard(data: FlashCard) {
-    const uDoc = doc(this.fire, DbCollection.FlashCardList, this.uid.generateUUID());
     const Ref = collection(this.fire, DbCollection.FlashCards);
     await setDoc(doc(Ref), data, { merge: true });
   }
@@ -72,18 +73,22 @@ export class ApiService {
     await updateDoc(docRef, { item: item });
   }
 
-  async deleteFlashcardList(id: string) {
-    const docRef = doc(this.fire, DbCollection.FlashCardList, id);
-    await deleteDoc(docRef);
-  }
-  async deleteFlashcard(id: string) {
-    const docRef = doc(this.fire, DbCollection.FlashCards, id);
+  // delete
+  async deleteRow(dbName: string, id: string) {
+    const docRef = doc(this.fire, dbName, id);
     await deleteDoc(docRef);
   }
 
+  async deleteFlashcardList(id: string) {
+    await this.deleteRow(DbCollection.FlashCardList, id);
+  }
+
+  async deleteFlashcard(id: string) {
+    await this.deleteRow(DbCollection.FlashCards, id);
+  }
+
   async deleteCategory(category: string) {
-    const docRef = doc(this.fire, DbCollection.Categorys, category);
-    await deleteDoc(docRef);
+    await this.deleteRow(DbCollection.Categorys, category);
   }
 
   async deleteItem(category: string, item: string[]) {
@@ -91,29 +96,26 @@ export class ApiService {
     await updateDoc(docRef, { item: item });
   }
 
-  async updateFlashcard(cardid:string, isRight: boolean) {
-
+  // update
+  async updateFlashcard(cardid: string, isRight: boolean) {
     const docRef = doc(this.fire, DbCollection.FlashCards, cardid);
     await updateDoc(docRef, { isRight: isRight });
   }
 
-  async resetFlashcard(uid:string) {
-    const q = query(collection(this.fire, DbCollection.FlashCards), where('uid','==', uid));
+  //reset
+  async resetFlashcard(uid: string) {
+    const q = query(collection(this.fire, DbCollection.FlashCards), where('uid', '==', uid));
 
     getDocs(q)
-    .then(d => {
-      d.forEach(async d => {
-        const docData = d.data();
-        const docRef = doc(this.fire, DbCollection.FlashCards, d.id);
-        await updateDoc(docRef, { isRight: false });
+      .then(d => {
+        d.forEach(async d => {
+          const docData = d.data();
+          const docRef = doc(this.fire, DbCollection.FlashCards, d.id);
+          await updateDoc(docRef, { isRight: false });
+        })
       })
-    })
-    .catch(er => console.log(er))
-  
-  }
-  async createUser(user:Account) {
-    const cateRef = collection(this.fire, DbCollection.Users);
-    await setDoc(doc(cateRef), user, { merge: true });
+      .catch(er => console.log(er))
+
   }
 
 }

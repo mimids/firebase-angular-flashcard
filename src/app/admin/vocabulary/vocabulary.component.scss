@@ -2,10 +2,16 @@
     opacity: 0.75;
     font-size: 0.75em;
 }
-.voca{
-    width: 80%;
-    text-align: center;
+
+section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    margin : 0 auto;
 }
+
 .form-field {
     width: 90%;
 }

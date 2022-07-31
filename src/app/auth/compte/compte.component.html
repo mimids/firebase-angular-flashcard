@@ -1,4 +1,6 @@
+<section class="section-login">  
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div class="center-login">
     <mat-form-field appearance="outline" color="accent" class="form-field">
       <mat-label i18n>First name</mat-label>
       <input
@@ -76,6 +78,7 @@
           isPasswordHidden ? 'visibility_off' : 'visibility'
         }}</mat-icon>
       </button>
+ 
       <mat-error *ngIf="f.password?.errors?.required" i18n
         >You must fill in this field</mat-error
       >
@@ -133,5 +136,6 @@
         <mat-icon>send</mat-icon>
       </button>
     </div>
+    </div>
   </form>
-  
+  </section>

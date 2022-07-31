@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
         this.auth.user.uid = retour.user.uid;
         this.isLoading = false;
         this.userService.update(this.auth.user, retour.user.uid);
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
         this.changeDetectorRef.detectChanges();
 
         // this.api.getFireUser(this.auth.user.uid)

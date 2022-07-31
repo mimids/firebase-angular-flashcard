@@ -1,0 +1,19 @@
+section{
+    height: 100%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.center-login {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    text-align: center;
+    opacity: 0.95;
+    
+}

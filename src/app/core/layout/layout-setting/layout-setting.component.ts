@@ -10,6 +10,7 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -36,6 +37,7 @@ export class LayoutSettingComponent implements OnInit, OnDestroy {
     private readonly themeService: ThemeService,
     private readonly userService: UserService,
     private readonly dialog: MatDialog,
+    private readonly router: Router,
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly snackbarService: SnackbarService,
   ) {}
@@ -71,6 +73,7 @@ export class LayoutSettingComponent implements OnInit, OnDestroy {
 
   onSignOut(): void {
     this.userService.delete();
+    this.router.navigate(['/auth/login']);
   }
 
   onOpenDialog(templateRef: TemplateRef<Component>): void {

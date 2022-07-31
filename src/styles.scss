@@ -3,6 +3,7 @@
 @include mat.core();
 html, body { height: 100%; }
 
+h2{padding: 10px;}
 
 .flex-column{
   display: flex;
@@ -29,6 +30,7 @@ $theme-light: mat.define-light-theme(
       primary: $palette-light-primary,
       accent: $palette-light-accent,
       warn: $palette-light-warn,
+
     ),
   )
 );
@@ -95,7 +97,17 @@ $foreground-dark: map-get($theme-dark, foreground);
   );
   color-scheme: light;
 
+  .section-home{
+    background-image: url('../../../assets/img/back4.jpg');
+  }
+  
+  .section-login{
+    background-image: url('../../../assets/img/back2.jpg');
+  }
 
+  .center-login {
+    background-color: #ffffff;
+  }
   .theme-background {
     background-color: #ffffff;
   }
@@ -119,7 +131,15 @@ $foreground-dark: map-get($theme-dark, foreground);
   color-scheme: dark;
   scrollbar-color: #6b6b6b #2b2b2b;
 
-
+  .section-login{
+    background-image: url('../../../assets/img/back1.jpg');
+  }
+  .section-home{
+    background-image: url('../../../assets/img/back3.jpg');
+  }
+  .center-login {
+    background-color: #303030;
+  }
   .theme-background {
     background-color: #303030;
   }

@@ -1,8 +1,8 @@
-<div class="voca">
+<section>
 
   <h2>Vocabulaly</h2>
 
-  <form autocomplete="off" [formGroup]="formVoca" (ngSubmit)="createVoca(formVoca.value)" class="flex-column">
+  <form autocomplete="off" [formGroup]="formVoca" (ngSubmit)="createVoca(formVoca.value)" class="flex-column" >
     <mat-form-field appearance="fill">
       <mat-label>Category</mat-label>
       <mat-select formControlName="categorys" multiple>
@@ -43,10 +43,10 @@
       </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button class="icon-after rounded" color="accent" type="submit"> <span i18n>Submit</span>
+    <button mat-raised-button class="icon-after rounded"  color="accent" type="submit"> <span i18n>Submit</span>
       <mat-icon>send</mat-icon>
     </button>
   </form>
 
 
-</div>
+</section>

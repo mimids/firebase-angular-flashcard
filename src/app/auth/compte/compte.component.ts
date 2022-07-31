@@ -96,7 +96,7 @@ export class CompteComponent implements OnInit {
       this.auth.user.uid=u.user.uid;
       this.apiService.setFireUsers(this.auth.user);
       this.userService.update(this.auth.user, u.user.uid);
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
       }).catch(err => {
         console.log(err.code,err.messager);
         this.errorHappens.emit((err as ApiError).message);
