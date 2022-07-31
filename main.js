@@ -2,8 +2,9 @@ const { app, BrowserWindow } = require('electron');
 const { truncate } = require('fs');
 const path = require("path");
 const url = require('url');
+const serve = require('electron-serve')
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true;
-
+const loadURL = serve({directory: 'dist'});
 
 let win;
 function createWindow() {
@@ -20,13 +21,15 @@ function createWindow() {
             contextIsolation: true,
             enableRemoteModule: true,
             nodeIntegrationInWorker: true, 
-            // useContentSize: true,
+            useContentSize: true,
             preload: path.join(__dirname, 'preload.js')
+            
         },
         icon: `file://${__dirname}/dist/assets/fuji.png`,
     })
-    win.setMenuBarVisibility(false);
-    win.loadFile(path.join(__dirname, `/dist/index.html`));
+    // win.setMenuBarVisibility(false);
+    loadURL(win);
+    // win.loadFile(path.join(__dirname, `/dist/index.html`));
 }
 /** Application prête, on charge un  */
 app.whenReady().then(createWindow);
@@ -41,4 +44,5 @@ app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
         createWindow();
     }
+
 });

@@ -127,11 +127,11 @@ $foreground-dark: map-get($theme-dark, foreground);
   color-scheme: light;
 
   .section-home{
-    background-image: url('../../../assets/img/back4.jpg');
+    background-image: url('assets/img/back4.jpg');
   }
 
   .section-login{
-    background-image: url('../../../assets/img/back2.jpg');
+    background-image: url('assets/img/back2.jpg');
   }
 
   .center-login {
@@ -161,10 +161,10 @@ $foreground-dark: map-get($theme-dark, foreground);
   scrollbar-color: #6b6b6b #2b2b2b;
 
   .section-login{
-    background-image: url('../../../assets/img/back1.jpg');
+    background-image: url('assets/img/back1.jpg');
   }
   .section-home{
-    background-image: url('../../../assets/img/back3.jpg');
+    background-image: url('assets/img/back3.jpg');
   }
   .center-login {
     background-color: #303030;

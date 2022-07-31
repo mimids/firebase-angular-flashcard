@@ -1,28 +1,21 @@
-# NgFlashCardFront
+L'apprication angular firebase electron
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
+Vous pouvez également passer du thème clair au thème foncé dans le menu utilisateur.
 
-## Development server
+![Capture d’écran du 2022-07-31 15-29-19](https://user-images.githubusercontent.com/67426565/182032039-3fa68a50-72a8-4d12-aef0-527381b1a8fe.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![Capture d’écran du 2022-07-31 15-28-42](https://user-images.githubusercontent.com/67426565/182032066-9dc5dbab-0fe1-4add-a248-bdb23f37849e.png)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# CDA-2021-P2_MiParcours
 
-## Running unit tests
+Cher étudients, les chiffres sont tombés avec une moyenne de 8. L'échelle était un peu idiote mais nous avons réussi à faire une interprétation.
+Voici donc le cahier des charges pour la semaine prochaine : 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1 - Il vous faut fixer vos objectifs de production pour la semaine. Ceux-ci doivent être corrélés aux compétences du référentiel. Exemple : je vais développer ça et ça pour pouvoir illustrer telle et telle compétence devant le jury.
 
-## Running end-to-end tests
+2 - Des points quotidiens seront faits à 9h le matin en visio. Sur Discord pour les gens pas à l'aise avec la techno et zoom pour les autres. Jérôme sera là lundi mardi mercredi, moi jeudi, vendredi. On sera en mode agile avec chacun qui répondra aux questions types : ce que j'ai fait, les difficultés rencontrées, ce que je vais faire. Une organisation pourra être mise en place pour aider ceux qui bloquent sur tel ou tel point, avec le formateur ou un autre étudiant.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# front-flashcard
+3 - Un lien github classroom vous sera communiqué ici même pour vous permettre de faire vos rendus. Ceux-ci sont impératifs ! C'est le seul moyen de valider votre travail et votre présence pour que vous soyez payés.
