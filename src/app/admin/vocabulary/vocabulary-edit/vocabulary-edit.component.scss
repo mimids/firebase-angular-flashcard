@@ -8,11 +8,20 @@ mat-label{
 input{
     min-height: 50px;
     border: 1px solid gray ;
-    padding: 10px;
     margin-bottom: 10px;
 }
 
 textarea{
     border: 1px solid gray ;
     margin-bottom: 10px;
+}
+
+.vocaedit{
+
+    width: 90%;
+    text-align: center;
+}
+
+mat-radio-button{
+    padding: 10px;
 }

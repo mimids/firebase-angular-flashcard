@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category, FlashCard, Vocabulary } from 'src/app/interfaces/card';
 import { ApiService } from 'src/app/services/api.service';
 import { Firestore, getDocs, getDoc, collection, doc, onSnapshot, where, query } from '@angular/fire/firestore';
 import { DbCollection } from 'src/app/interfaces/firebase';
 import { CategoryService } from 'src/app/services/category.service';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
   selector: 'app-vocabulary',
@@ -14,6 +15,9 @@ import { CategoryService } from 'src/app/services/category.service';
 export class VocabularyComponent implements OnInit {
   public formVoca: FormGroup;
   public vocabularys: Vocabulary[]=[];
+  defaultWordLang='fr';
+  defaultMeeningLang='en';
+  @Output() checkedChange: EventEmitter<MatRadioChange> | undefined ;
 
   constructor(
     private fire: Firestore,
@@ -24,10 +28,10 @@ export class VocabularyComponent implements OnInit {
   ) {
     this.formVoca = this.fb.group({
       categorys: new FormControl('', [Validators.required]),
-      word: ['', Validators.required],
-      meaning: ['', Validators.required],
-      lang_word: ['', Validators.required],
-      lang_meaning: ['', Validators.required],
+      word: ['', Validators.required,, Validators.minLength(1)],
+      meaning: ['', Validators.required,, Validators.minLength(1)],
+      lang_word: ['fr', Validators.required],
+      lang_meaning: ['en', Validators.required],
     });
   }
 
@@ -36,11 +40,7 @@ export class VocabularyComponent implements OnInit {
   }
 
   async createVoca(data: Vocabulary) {
-    console.log('this.formVoca.get',this.formVoca.get('categorys')?.value);
-    
-    if(data.word!='' && data.meaning !='' && data.lang_meaning !='' && data.lang_word!=''){
     await this.apiService.createVocabulary(data);
-    }
   }
 
   show(): void {

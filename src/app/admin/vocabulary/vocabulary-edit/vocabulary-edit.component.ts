@@ -15,6 +15,8 @@ import { CategoryService } from 'src/app/services/category.service';
 export class VocabularyEditComponent implements OnInit{
   data: Vocabulary = <Vocabulary>{};
   id = '';
+
+
   public formVoca: FormGroup;
   constructor(
     private fire: Firestore,
@@ -27,8 +29,8 @@ export class VocabularyEditComponent implements OnInit{
   ) {
     this.formVoca = this.fb.group({
       categorys: ['', Validators.required],
-      word: ['', Validators.required],
-      meaning: ['', Validators.required],
+      word: ['', Validators.required,, Validators.minLength(1)],
+      meaning: ['', Validators.required,, Validators.minLength(1)],
       lang_word: ['', Validators.required],
       lang_meaning: ['', Validators.required],
     });
@@ -44,7 +46,6 @@ export class VocabularyEditComponent implements OnInit{
     const docRef = doc(this.fire, DbCollection.Vocabularys, this.id);
     const docSnap = await getDoc(docRef);
     this.data = docSnap.data() as Vocabulary;
-    console.log('ddd', this.data);
     this.data.id = docSnap.id;
     this.changeDetectorRef.detectChanges();
   }
