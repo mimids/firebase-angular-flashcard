@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   OnDestroy,
@@ -20,7 +21,7 @@ import { ApiError } from '../../core/models/error.model';
 import { SnackbarService } from '../../services/snackbar.service';
 import { mustMatchValidator } from '../../shard/validators/must-murch.validator';
 import { AuthError } from '../auth.model';
-import { Auth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { ApiService } from 'src/app/services/api.service';
 import { UserService } from 'src/app/services/user.service';
@@ -30,6 +31,7 @@ import {
   listAll
 } from "firebase/storage";
 import { getApp } from '@angular/fire/app';
+import { getDownloadURL, list } from '@angular/fire/storage';
 
 
 
@@ -45,6 +47,8 @@ export class CompteComponent implements OnInit {
   isLoading = false;
   isPasswordHidden = true;
   errorMessage = '';
+  imgUrls: string[] = [];
+  defaultavatar='0-1.png'
   private readonly isDestroyed$ = new Subject<boolean>();
 
   get f(): { [key: string]: AbstractControl } {
@@ -52,27 +56,49 @@ export class CompteComponent implements OnInit {
   }
 
   constructor(
-    public auth:AuthService,
-    private authFire:Auth,
+    public auth: AuthService,
+    private authFire: Auth,
     private apiService: ApiService,
     private readonly formBuilder: FormBuilder,
     private readonly router: Router,
     private readonly snackbarService: SnackbarService,
     private readonly dialog: MatDialog,
     private userService: UserService,
+    private readonly changeDetectorRef: ChangeDetectorRef,
   ) {
     this.formGroup = this.createFormGroup('change');
+    for(let i=1; i<=100; i++){
+      this.imgUrls.push('0-'+i+'.png');
+    }
   }
 
 
-  ngOnInit(
-   
+  ngOnInit(): void {
 
-  ): void {
-    const firebaseApp = getApp();
-    const storage = getStorage(firebaseApp, "gs://flashcard-c24ef.appspot.com");
+  //       const storage = getStorage();
+  //   const storageRef = ref(storage, 'avatar');
+  // list(storageRef, { maxResults: 10 })
+  //     .then((res) => {
+  //       res.items.forEach(async (itemRef) => {
+  //         await getDownloadURL(ref(storage, itemRef.fullPath))
+  //           .then(url => {
+  //             this.imgUrls.push(url);
+  //           })
+  //           .catch(err => console.log(err))
+  //         });
+  //         console.log('this.imgUrls',this.imgUrls);
+  //         this.changeDetectorRef.detectChanges();
+        
+  //     })
+    
+    // getDownloadURL(storageRef)
+    // .then(url => {
+    //   console.log('url',url);
 
-    const storageRef = ref(storage);
+    //   this.imgUrl = url;
+    //   this.changeDetectorRef.detectChanges();
+    // })
+    // .catch(err => console.log(err))
 
   }
 
@@ -81,28 +107,29 @@ export class CompteComponent implements OnInit {
     this.isDestroyed$.complete();
   }
 
-  onSubmit():void {
+  onSubmit(): void {
     this.formGroup.disable();
     this.isPasswordHidden = true;
     this.auth.user.firstName = this.f.firstName?.value as string;
     this.auth.user.lastName = this.f.lastName?.value as string;
     this.auth.user.email = this.f.email?.value as string;
     this.auth.user.password = this.f.password?.value as string;
+    this.auth.user.avatar = this.f.avatar?.value as string;
 
 
-      createUserWithEmailAndPassword(this.authFire,this.auth.user.email,this.auth.user.password)
-      .then(u =>{
-      console.log(u);
-      this.auth.user.uid=u.user.uid;
-      this.apiService.setFireUsers(this.auth.user);
-      this.userService.update(this.auth.user, u.user.uid);
-      this.router.navigate(['/home']);
+    createUserWithEmailAndPassword(this.authFire, this.auth.user.email, this.auth.user.password)
+      .then(u => {
+        console.log(u);
+        this.auth.user.uid = u.user.uid;
+        this.apiService.setFireUsers(this.auth.user);
+        this.userService.update(this.auth.user, u.user.uid);
+        this.router.navigate(['/home']);
       }).catch(err => {
-        console.log(err.code,err.messager);
+        console.log(err.code, err.messager);
         this.errorHappens.emit((err as ApiError).message);
         this.errorMessage = (err as ApiError).message;
         this.isLoading = false;
-    })
+      })
   }
 
 
@@ -117,7 +144,6 @@ export class CompteComponent implements OnInit {
     updateOn: 'submit' | 'change',
     previousValue?: { [key: string]: unknown },
   ): FormGroup {
-    // tslint:disable
     const formGroup = this.formBuilder.group(
       {
         firstName: [null, [Validators.required]],
@@ -128,6 +154,7 @@ export class CompteComponent implements OnInit {
           [Validators.required, Validators.pattern(/^.{8,255}$/)],
         ],
         confirmPassword: [null, [Validators.required]],
+        avatar: [null, [Validators.required]],
       },
       {
         updateOn,

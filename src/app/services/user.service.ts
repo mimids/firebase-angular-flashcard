@@ -5,7 +5,7 @@ import { Observable, of, ReplaySubject } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 
 import { environment } from '../..//environments/environment';
-import { Account, Upload } from '../interfaces/user';
+import { Account} from '../interfaces/user';
 
 import { LocalStorageService } from './local-storage.service';
 
@@ -53,19 +53,5 @@ export class UserService {
     this.localStorageService.removeItemInStorage(this.jwtKey);
     this.jwt = undefined;
     this.router.navigate(['home']);
-  }
-
-  updateAvatar$(formData: FormData): Observable<Upload | undefined> {
-    return this.account$.pipe(
-      take(1),
-      switchMap((account) =>
-        account !== undefined
-          ? this.http.post<Upload>(
-              `${environment.apiUrl}/accounts/${account.uid}/avatar`,
-              formData,
-            )
-          : of(undefined),
-      ),
-    );
   }
 }

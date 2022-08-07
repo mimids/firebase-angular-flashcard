@@ -10,7 +10,7 @@
 >
   <img
     *ngIf="account"
-    src="{{ account?.avatar?.thumbPath | apiPath }}"
+    src="assets/avatar/{{ account!.avatar }}"
     default="profile"
     i18n-alt
     alt="Your avatar"
@@ -34,7 +34,7 @@
         "
       >
         <img
-          src="{{ account?.avatar?.thumbPath | apiPath }}"
+          src="assets/avatar/{{ account!.avatar }}"
           default="profile"
           i18n-alt
           alt="Your avatar"

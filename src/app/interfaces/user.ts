@@ -26,13 +26,9 @@ export enum Role {
       firstName?: string;
       lastName?: string;
       roles?: Role;
-      avatar?: Upload;
+      avatar?: string;
       email: string;
       password: string;
     }
 
-    export interface Upload {
-      path: string;
-      thumbPath: string;
-    }
     

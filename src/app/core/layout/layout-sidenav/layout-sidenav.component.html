@@ -3,7 +3,7 @@
     <div class="theme-primary p-16">
       <ng-container *ngIf="account">
         <img
-          src="{{ account?.avatar?.thumbPath | apiPath }}"
+          src="assets/avatar/{{ account!.avatar}}"
           default="profile"
           i18n-alt
           alt="Your avatar"

@@ -51,25 +51,7 @@ export class LayoutSettingComponent implements OnInit, OnDestroy {
     this.isDestroyed$.complete();
   }
 
-  onAvatarUpload(files: File[]): void {
-    const formData = new FormData();
-    formData.append('file', files[0]);
-
-    void this.userService
-      .updateAvatar$(formData)
-      .pipe(takeUntil(this.isDestroyed$))
-      .subscribe(
-        (upload) => {
-          void this.userService.update({
-            ...(this.account as Account),
-            avatar: upload,
-          });
-          this.dialog.closeAll();
-          this.changeDetectorRef.markForCheck();
-        },
-        (err) => this.snackbarService.open((err as Error).message, 'warn'),
-      );
-  }
+ 
 
   onSignOut(): void {
     this.userService.delete();
