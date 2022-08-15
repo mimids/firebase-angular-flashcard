@@ -9,7 +9,7 @@
     <div class="flex-column" style="flex-basis: 50%">
       <form autocomplete="off" [formGroup]="formVoca" (ngSubmit)="createVoca(formVoca.value)" class="flex-column">
         <mat-form-field appearance="fill">
-          <mat-label>Category</mat-label>
+          <mat-label i18n>Category</mat-label>
           <mat-select formControlName="categorys" multiple>
             <mat-select-trigger>
               {{formVoca.get('categorys')?.value}}
@@ -34,12 +34,12 @@
           </mat-radio-group>
         </mat-form-field>
 
-        <mat-label>Meaning </mat-label>
+        <mat-label i18n>Meaning </mat-label>
         <mat-form-field appearance="outline" color="accent" class="form-field">
           <textarea matInput type="text" formControlName="meaning" autocomplete="off" cols="30" rows="10"></textarea>
           <mat-radio-group formControlName="lang_meaning" [(ngModel)]="defaultMeeningLang"
           [ngModelOptions]="{standalone: true}">
-            <mat-radio-button value="fr" i18n>Franch</mat-radio-button>
+            <mat-radio-button value="fr" i18n>French</mat-radio-button>
             <mat-radio-button value="en" [checked]="true" i18n>English</mat-radio-button>
           </mat-radio-group>
         </mat-form-field>

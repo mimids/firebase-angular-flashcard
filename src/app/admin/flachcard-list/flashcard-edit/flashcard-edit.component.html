@@ -1,9 +1,9 @@
 <section>
 
-  <h2>FlashCard Editer</h2>
+  <h2 i18n>FlashCard Editer</h2>
   <form autocomplete="off" [formGroup]="formFlash" (ngSubmit)="setVocabulary(formFlash.value)" class="flex-column">
     <mat-form-field appearance="fill">
-      <mat-label>Category</mat-label>
+      <mat-label i18n>Category</mat-label>
       <mat-select formControlName="categorys" multiple>
         <mat-select-trigger>
           {{formFlash.get('categorys')?.value}}
@@ -20,9 +20,9 @@
       <mat-icon>send</mat-icon>
     </button>
   </form>
-<div i18n class="explication">
-  <p>Click on a card on the right to add it to the flashcards on the left.</p>
-  <p>Press X to remove a flash card from the list.</p>
+<div class="explication">
+  <p i18n>Click on a card on the right to add it to the flashcards on the left.</p>
+  <p i18n>Press X to remove a flash card from the list.</p>
 </div>
   <div class="flex-row">
     <div class="flex-column">

@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template" target-language="fr">
+    <body>
+      <trans-unit id="1806667489382256324" datatype="html">
+        <source>Category</source>
+        <target state="translated">Catégorie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/category/category.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/flachcard-list/flashcard-edit/flashcard-edit.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary-edit/vocabulary-edit.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3508054105810277538" datatype="html">
+        <source>Flashcard List</source>
+        <target state="translated">Liste de cartes flash</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/flachcard-list/flachcard-list.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="584504993841708060" datatype="html">
+        <source>FlashCard Editer</source>
+        <target state="translated">FlashCard Editer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/flachcard-list/flashcard-edit/flashcard-edit.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6718126171774613745" datatype="html">
+        <source>Search </source>
+        <target state="translated">Recherche</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/flachcard-list/flashcard-edit/flashcard-edit.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4635598715321313480" datatype="html">
+        <source>Click on a card on the right to add it to the flashcards on the left.</source>
+        <target state="translated">Cliquez sur une carte à droite pour l'ajouter aux flashcards à gauche.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/flachcard-list/flashcard-edit/flashcard-edit.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4864725398108161872" datatype="html">
+        <source>Press X to remove a flash card from the list.</source>
+        <target state="translated">Appuyez sur X pour retirer une carte flash de la liste.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/flachcard-list/flashcard-edit/flashcard-edit.component.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1032355955318739955" datatype="html">
+        <source>categorys [ <x id="INTERPOLATION" equiv-text="{{ data.categorys }}"/> ]</source>
+        <target state="translated">categorys [ { { data.categorys }} ] ]</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/flachcard-list/flashcard-edit/flashcard-edit.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1219001335502742581" datatype="html">
+        <source>Meaning (<x id="INTERPOLATION" equiv-text="{{ data.lang_meaning }}"/>)</source>
+        <target state="translated">Signification (<x id="INTERPOLATION" equiv-text="{{ data.lang_meaning }}"/>)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/flachcard-list/flashcard-edit/flashcard-edit.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2819326630982218103" datatype="html">
+        <source>Edit Vocabulary</source>
+        <target state="translated">Modifier le vocabulaire</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary-edit/vocabulary-edit.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2649337797920679445" datatype="html">
+        <source>Word </source>
+        <target state="translated">un mot</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary-edit/vocabulary-edit.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7633754075223722162" datatype="html">
+        <source>French</source>
+        <target state="translated">Français</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary-edit/vocabulary-edit.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary-edit/vocabulary-edit.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5866254605255506989" datatype="html">
+        <source>English</source>
+        <target state="translated">Anglais</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary-edit/vocabulary-edit.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary-edit/vocabulary-edit.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5096166115320715079" datatype="html">
+        <source>Meaning </source>
+        <target state="translated">Signification </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary-edit/vocabulary-edit.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="935187492052582731" datatype="html">
+        <source>Submit</source>
+        <target state="translated">Envoyer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary-edit/vocabulary-edit.component.html</context>
+          <context context-type="linenumber">46,47</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">47,48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">132,133</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7896079854278240687" datatype="html">
+        <source>Vocabulaly</source>
+        <target state="translated">Vocabulaire</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5571964445052110" datatype="html">
+        <source>Enter the word in the editor and SUBMIT.</source>
+        <target state="translated">Saisissez le mot dans l'éditeur et cliquez sur SUBMIT.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2088639587076445540" datatype="html">
+        <source> A card will be added.</source>
+        <target state="translated">Une carte sera ajoutée.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1623255914211782187" datatype="html">
+        <source>French</source>
+        <target state="translated">Français</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/admin/vocabulary/vocabulary.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5342432350421167093" datatype="html">
+        <source>First name</source>
+        <target state="translated"> Prénom</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6834709751688594809" datatype="html">
+        <source>You must fill in this field</source>
+        <target state="translated">Vous devez remplir ce champ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7098844885304606190" datatype="html">
+        <source>Must contain 2-50 alphanumeric characters</source>
+        <target state="translated">Doit contenir 2 à 50 caractères alphanumériques</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3586674587150281199" datatype="html">
+        <source>Last name</source>
+        <target state="translated">Nom de famille</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3967269098753656610" datatype="html">
+        <source>Email address</source>
+        <target state="translated">Adresse e-mail</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7408541314475571768" datatype="html">
+        <source>Not a valid email</source>
+        <target state="translated">Pas d'email valide</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1797594492746328723" datatype="html">
+        <source>Email is already taken</source>
+        <target state="translated">L'e-mail est déjà pris</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1431416938026210429" datatype="html">
+        <source>Password</source>
+        <target state="translated">Mot de passe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4560504204439476580" datatype="html">
+        <source>Toggle password visibility</source>
+        <target state="translated">Afficher le mot de passe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">76,78</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">107,109</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4569009195419685444" datatype="html">
+        <source>Must contain 8+ characters</source>
+        <target state="translated">Doit contenir au moins 8 caractères</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3782563238994348625" datatype="html">
+        <source>Confirm password</source>
+        <target state="translated">Confirmer le mot de passe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7118938725348407395" datatype="html">
+        <source>Passwords doesn't match</source>
+        <target state="translated">Ce mots de passe ne correspond pas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9030450141233291564" datatype="html">
+        <source>You must fill in this field </source>
+        <target state="translated">Vous devez remplir ce champ </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">117,118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8920809083620698740" datatype="html">
+        <source>avatar</source>
+        <target state="translated">avatar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/compte/compte.component.html</context>
+          <context context-type="linenumber">120</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="64548035446729839" datatype="html">
+        <source>Please check your identifier</source>
+        <target state="translated">Veuillez vérifier votre identifiant</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="546417068034081589" datatype="html">
+        <source>Please check your password</source>
+        <target state="translated">Veuillez vérifier votre mot de passe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1510122058951132508" datatype="html">
+        <source>Toggle sidenav</source>
+        <target state="translated">Basculer le sidenav</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-nav/layout-nav.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3873655769195380286" datatype="html">
+        <source>Button that displays a tooltip when focused or hovered over</source>
+        <target state="translated">Bouton qui affiche une info-bulle lorsqu'il est ciblé ou survolé.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-nav/layout-nav.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7166653310661442169" datatype="html">
+        <source>App icon</source>
+        <target state="translated">Icône de l'application</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-nav/layout-nav.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7205402484114463015" datatype="html">
+        <source>Trigger user settings menu</source>
+        <target state="translated">Menu des paramètres utilisateur des déclencheurs</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3465772944835088262" datatype="html">
+        <source>Your avatar</source>
+        <target state="translated">Votre avatar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-sidenav/layout-sidenav.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5572929611019584639" datatype="html">
+        <source>Click here to set a new image</source>
+        <target state="translated">Cliquez ici pour mettre une nouvelle image</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5207635742003539443" datatype="html">
+        <source>Sign in</source>
+        <target state="translated">Se connecter</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2949848596707725099" datatype="html">
+        <source>Sign out</source>
+        <target state="translated">Se déconnecter</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2691014706193835883" datatype="html">
+        <source>Light theme</source>
+        <target state="translated">Thème léger</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7278213602149834905" datatype="html">
+        <source>Dark theme</source>
+        <target state="translated">Thème foncé</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="330986894814703286" datatype="html">
+        <source>Choose your avatar</source>
+        <target state="translated">Choisissez votre avatar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7007809073199554622" datatype="html">
+        <source>Are you sure ?</source>
+        <target state="translated">Vous êtes sûr ?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2042192176507364548" datatype="html">
+        <source>If you sign out you will have to enter your credentials again to use application !</source>
+        <target state="translated">Si vous vous déconnectez, vous devrez saisir à nouveau vos informations d'identification pour utiliser l'application !</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">94,95</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2159130950882492111" datatype="html">
+        <source>Cancel</source>
+        <target state="translated">Annuler</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-setting/layout-setting.component.html</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="app-description" datatype="html">
+        <source>Create a vocabulary book.</source>
+        <target state="translated">Créez un cahier de vocabulaire.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
+          <context context-type="linenumber">44,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home" datatype="html">
+        <source>Home</source>
+        <target state="translated">Accueil</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
+          <context context-type="linenumber">46,47</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout.component.ts</context>
+          <context context-type="linenumber">85,84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="flashcard" datatype="html">
+        <source>Flash card</source>
+        <target state="translated">Carte mémoire</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
+          <context context-type="linenumber">47,49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout.component.ts</context>
+          <context context-type="linenumber">90,89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login" datatype="html">
+        <source>Login</source>
+        <target state="translated">Connexion</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout.component.ts</context>
+          <context context-type="linenumber">73,72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="compte" datatype="html">
+        <source>Create Account</source>
+        <target state="translated">Créer un compte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout.component.ts</context>
+          <context context-type="linenumber">78,77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="admin" datatype="html">
+        <source>Edit Category</source>
+        <target state="translated">Editer la catégorie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout.component.ts</context>
+          <context context-type="linenumber">95,94</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout.component.ts</context>
+          <context context-type="linenumber">100,99</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout.component.ts</context>
+          <context context-type="linenumber">105,104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8478349521159666709" datatype="html">
+        <source> right answer </source>
+        <target state="translated"> bonne réponse</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/flashcard/flashcard-contents/flashcard-contents.component.html</context>
+          <context context-type="linenumber">10,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="588874343548066027" datatype="html">
+        <source> wrong answer </source>
+        <target state="translated"> mauvaise réponse</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/flashcard/flashcard-contents/flashcard-contents.component.html</context>
+          <context context-type="linenumber">13,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3980151853209086547" datatype="html">
+        <source>Welcome to FlashCard</source>
+        <target state="translated">Bienvenue à FlashCard</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5392554039066176768" datatype="html">
+        <source>This app uses Flashcard to help you memorize words efficiently!</source>
+        <target state="translated">Cette application utilise Flashcard pour vous aider à mémoriser les mots de manière efficace !</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5911600508931383328" datatype="html">
+        <source>How to use</source>
+        <target state="translated">Mode d'emploi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3085496320974704184" datatype="html">
+        <source>1.Create a category of words - <x id="START_LINK" ctype="x-a" equiv-text="&lt;a [routerLink]=&quot;['/admin/category']&quot;>"/>Edit Category<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></source>
+        <target state="translated">1.Créer une catégorie de mots - <x id="START_LINK" ctype="x-a" equiv-text="&lt;a [routerLink]=&quot;['/admin/category']&quot;>"/>Editer la catégorie<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6752024452377907050" datatype="html">
+        <source>2.Register a word - <x id="START_LINK" ctype="x-a" equiv-text="&lt;a [routerLink]=&quot;['/admin/vocabulary']&quot;>"/>Edit Vocabulary<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></source>
+        <target state="translated">2.Enregistrer un mot - <x id="START_LINK" ctype="x-a" equiv-text="&lt;a [routerLink]=&quot;['/admin/vocabulary']&quot;>"/>Modifier le vocabulaire<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4080350913439544170" datatype="html">
+        <source>3.Choose a word and make a flashcard - <x id="START_LINK" ctype="x-a" equiv-text="&lt;a [routerLink]=&quot;['/admin/flashcard']&quot;>"/>Edit Flash Card<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></source>
+        <target state="translated">3.Choisissez un mot et créez une flashcard - <x id="START_LINK" ctype="x-a" equiv-text="&lt;a [routerLink]=&quot;['/admin/flashcard']&quot;>"/>Edit Flash Card<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1801866252648064475" datatype="html">
+        <source>4.You're all set. Let's memorize the words on the flashcard right away! - <x id="START_LINK" ctype="x-a" equiv-text="&lt;a [routerLink]=&quot;['/flashcard']&quot;>"/>Flash Card<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></source>
+        <target state="translated">4.Vous êtes prêt. Mémorisons tout de suite les mots de la carte flash ! - <x id="START_LINK" ctype="x-a" equiv-text="&lt;a [routerLink]=&quot;['/flashcard']&quot;>"/>Carte flash<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2275328567992347600" datatype="html">
+        <source>Page not found</source>
+        <target state="translated">Page non trouvée</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/not-found/not-found.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
