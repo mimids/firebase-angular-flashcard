@@ -37,6 +37,7 @@ export class ApiService {
     const uDoc = doc(this.fire, DbCollection.Users, user.uid!);
     await setDoc(uDoc, u, { merge: true });
   }
+  
   async getFireUser(uid: string) {
     const uDoc = doc(this.fire, DbCollection.Users, uid);
     return await getDoc(uDoc);
@@ -91,8 +92,6 @@ export class ApiService {
   }
 
   async deleteVocabulary(id: string) {
-    console.log('id',id);
-    
     await this.deleteRow(DbCollection.Vocabularys, id);
   }
 

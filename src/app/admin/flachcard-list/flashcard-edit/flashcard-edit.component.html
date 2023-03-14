@@ -1,62 +1,54 @@
 <section>
 
   <h2 i18n>FlashCard Editer</h2>
-  <form autocomplete="off" [formGroup]="formFlash" (ngSubmit)="setVocabulary(formFlash.value)" class="flex-column">
-    <mat-form-field appearance="fill">
-      <mat-label i18n>Category</mat-label>
-      <mat-select formControlName="categorys" multiple>
-        <mat-select-trigger>
-          {{formFlash.get('categorys')?.value}}
-          <span *ngIf="(formFlash.get('categorys')?.value.length || 0) > 1" class="selectlist">
-            (+{{(formFlash.get('categorys')?.value.length || 0) - 1}} {{formFlash.get('categorys')?.value.length === 2 ?
-            'other' : 'others'}})
-          </span>
-        </mat-select-trigger>
-        <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+  <div class="form-style-5">
+    
+    <div class="explication">
+      <p i18n>Click on a card on the right to add it to the flashcards on the left.</p>
+      <p i18n>Press X to remove a flash card from the list.</p>
+    </div>
+  </div>
+    <div class="flex-row">
 
-    <button mat-raised-button class="icon-after rounded" color="accent" type="submit"> <span i18n>Search </span>
-      <mat-icon>send</mat-icon>
-    </button>
-  </form>
-<div class="explication">
-  <p i18n>Click on a card on the right to add it to the flashcards on the left.</p>
-  <p i18n>Press X to remove a flash card from the list.</p>
-</div>
-  <div class="flex-row">
-    <div class="flex-column">
-      <table *ngFor="let data of flashcards">
-        <tr>
-          <td style="width:90%">
+      <div class="flex-column form-style-5">
+        <label for="word">Flash Card List</label>
+         
+        <table *ngFor="let data of flashcards">
+          <tr>
+            <td style="width:90%">
+              <legend><span class="number">w</span> {{ data.word }}</legend>
+
+            <td style="width:10%">
+              <button mat-button color="accent" (click)="deleteFlashcard(data.id)">
+                <mat-icon>close</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="flex-column form-style-5">
+
+        <form autocomplete="off" [formGroup]="formFlash" (ngSubmit)="setVocabulary(formFlash.value)" class="flex-column">
+          <label for="word">Select Category</label>
+          <select formControlName="categorys">
+            <optgroup label="Categorys">
+              <option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}</option>
+            </optgroup>
+          </select>
+          <input type="submit" value="Apply" />
+        </form>
+        <div *ngFor="let data of vocabularys">
+          <a (click)="setFlashcard(data.id)">
             <mat-card class="card">
-              <mat-card-title>{{ data.word }} ({{ data.lang_word }})</mat-card-title>
-              <mat-card-subtitle i18n>categorys [ {{ data.categorys }} ]</mat-card-subtitle>
+              <mat-card-title>{{ data.word }} </mat-card-title>
+              <mat-card-subtitle i18n>Category: ({{ data.categorys }})</mat-card-subtitle>
               <mat-card-content>
-                <p>({{ data.lang_meaning }})</p>
                 <p>{{ data.meaning }}</p>
               </mat-card-content>
             </mat-card>
-          </td>
-          <td style="width:10%"> <button mat-button color="accent" (click)="deleteFlashcard(data.id)">
-              <mat-icon>close</mat-icon>
-            </button></td>
-        </tr>
-      </table>
-    </div>
-    <div class="flex-column">
-      <div *ngFor="let data of vocabularys">
-        <a (click)="setFlashcard(data.id)">
-          <mat-card class="card">
-            <mat-card-title>{{ data.word }} ({{ data.lang_word }})</mat-card-title>
-            <mat-card-subtitle i18n>Meaning ({{ data.lang_meaning }})</mat-card-subtitle>
-            <mat-card-content>
-              <p>{{ data.meaning }}</p>
-            </mat-card-content>
-          </mat-card>
-        </a>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
 </section>

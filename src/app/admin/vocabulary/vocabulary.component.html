@@ -1,68 +1,53 @@
 <section>
 
   <h2 i18n>Vocabulaly</h2>
-  <h4 i18n>Enter the word in the editor and SUBMIT.</h4>
-  <h4 i18n> A card will be added.</h4>
+
   
   
   <div class="flex-row">
-    <div class="flex-column" style="flex-basis: 50%">
-      <form autocomplete="off" [formGroup]="formVoca" (ngSubmit)="createVoca(formVoca.value)" class="flex-column">
-        <mat-form-field appearance="fill">
-          <mat-label i18n>Category</mat-label>
-          <mat-select formControlName="categorys" multiple>
-            <mat-select-trigger>
-              {{formVoca.get('categorys')?.value}}
-              <span *ngIf="(formVoca.get('categorys')?.value.length || 0) > 1" class="selectlist">
-                (+{{(formVoca.get('categorys')?.value.length || 0) - 1}} {{formVoca.get('categorys')?.value.length === 2
-                ?
-                'other' : 'others'}})
-              </span>
-            </mat-select-trigger>
-            <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-label i18n>Word </mat-label>
-        <mat-form-field appearance="outline" color="accent" class="form-field">
-          <input matInput type="text" formControlName="word" autocomplete="off" />
+    <div class="flex-column form-style-5">
+      <form autocomplete="off" [formGroup]="formVoca" (ngSubmit)="createVoca(formVoca.value)" >
+      <fieldset>
+        
+      <legend><span class="number">!</span> Enter the word in the editor and Apply.</legend>
+     <label for="word">Category:</label>
+            <select  formControlName="categorys">
+        <optgroup label="Categorys" >
+          <option *ngFor="let category of categoryService.categoryList">{{category}}</option>
+        </optgroup>
+        </select>
+      <input type="text" formControlName="word" placeholder="English phrase">
+      <hidden value="en" formControlName="lang_word"></hidden>
+      <textarea formControlName="meaning" placeholder="French meaning"></textarea>
+      <hidden value="fr" formControlName="lang_meaning"></hidden>
+ 
+      </fieldset>
 
-          <mat-radio-group formControlName="lang_word" [(ngModel)]="defaultWordLang"
-          [ngModelOptions]="{standalone: true}">
-            <mat-radio-button value="fr" i18n [checked]="true" >Franch</mat-radio-button>
-            <mat-radio-button value="en" i18n>English</mat-radio-button>
-          </mat-radio-group>
-        </mat-form-field>
-
-        <mat-label i18n>Meaning </mat-label>
-        <mat-form-field appearance="outline" color="accent" class="form-field">
-          <textarea matInput type="text" formControlName="meaning" autocomplete="off" cols="30" rows="10"></textarea>
-          <mat-radio-group formControlName="lang_meaning" [(ngModel)]="defaultMeeningLang"
-          [ngModelOptions]="{standalone: true}">
-            <mat-radio-button value="fr" i18n>French</mat-radio-button>
-            <mat-radio-button value="en" [checked]="true" i18n>English</mat-radio-button>
-          </mat-radio-group>
-        </mat-form-field>
-
-        <button mat-raised-button class="icon-after rounded" color="accent" type="submit"> <span i18n>Submit</span>
-          <mat-icon>send</mat-icon>
-        </button>
+      <input type="submit" value="Apply" />
       </form>
-      </div>
-      <div class="flex-column">
+
+    </div>
+    
+    <div class="flex-column form-style-5">
+    <form autocomplete="off" [formGroup]="formFlash" (ngSubmit)="setVocabulary(formFlash.value)" class="flex-column">
+      <label for="word">Select Category</label>
+      <select formControlName="categorys">
+        <optgroup label="Categorys">
+          <option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}</option>
+        </optgroup>
+      </select>
+      <input type="submit" value="Apply" />
+    </form>
+   
+        <label for="word">List of vocabulalys</label>
         <table *ngFor="let data of vocabularys">
           <tr>
             <td style="width:90%">
-              <mat-card class="card">
-                <mat-card-title>{{ data.word }} ({{ data.lang_word }}) </mat-card-title>
-                <mat-card-subtitle i18n>categorys [ {{ data.categorys }} ]</mat-card-subtitle>
-                <mat-card-content>
-                  <p>({{ data.lang_meaning }})</p>
-                  <p>{{ data.meaning }}</p>
-                </mat-card-content>
-              </mat-card>
+              <legend><span class="number">w</span> {{ data.word }}</legend>
+              Category:  {{ data.categorys }}
             </td>
-            <td style="width:10%"> 
+             
+            <td style="width:10%; text-align:center;"> 
               <a [routerLink]="['/admin/vocabulary/vocabulary-edit']" [queryParams]="{id: data.id}">
                edit
               </a>
@@ -73,4 +58,5 @@
         </table>
       </div>
     </div>
+  
 </section>

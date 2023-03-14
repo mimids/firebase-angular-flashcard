@@ -75,31 +75,6 @@ export class CompteComponent implements OnInit {
 
   ngOnInit(): void {
 
-  //       const storage = getStorage();
-  //   const storageRef = ref(storage, 'avatar');
-  // list(storageRef, { maxResults: 10 })
-  //     .then((res) => {
-  //       res.items.forEach(async (itemRef) => {
-  //         await getDownloadURL(ref(storage, itemRef.fullPath))
-  //           .then(url => {
-  //             this.imgUrls.push(url);
-  //           })
-  //           .catch(err => console.log(err))
-  //         });
-  //         console.log('this.imgUrls',this.imgUrls);
-  //         this.changeDetectorRef.detectChanges();
-        
-  //     })
-    
-    // getDownloadURL(storageRef)
-    // .then(url => {
-    //   console.log('url',url);
-
-    //   this.imgUrl = url;
-    //   this.changeDetectorRef.detectChanges();
-    // })
-    // .catch(err => console.log(err))
-
   }
 
   ngOnDestroy(): void {
@@ -108,18 +83,19 @@ export class CompteComponent implements OnInit {
   }
 
   onSubmit(): void {
+    const storage = getStorage();
     this.formGroup.disable();
     this.isPasswordHidden = true;
-    this.auth.user.firstName = this.f.firstName?.value as string;
-    this.auth.user.lastName = this.f.lastName?.value as string;
-    this.auth.user.email = this.f.email?.value as string;
-    this.auth.user.password = this.f.password?.value as string;
-    this.auth.user.avatar = this.f.avatar?.value as string;
-
-
-    createUserWithEmailAndPassword(this.authFire, this.auth.user.email, this.auth.user.password)
+    getDownloadURL(ref(storage, `avatar/${this.f.avatar?.value as string}`))
+    .then((url) => {
+      this.auth.user.firstName = this.f.firstName?.value as string;
+      this.auth.user.lastName = this.f.lastName?.value as string;
+      this.auth.user.email = this.f.email?.value as string;
+      this.auth.user.password = this.f.password?.value as string;
+      this.auth.user.avatar = url;
+      this.auth.user.imgUrl = url;
+      createUserWithEmailAndPassword(this.authFire, this.auth.user.email, this.auth.user.password)
       .then(u => {
-        console.log(u);
         this.auth.user.uid = u.user.uid;
         this.apiService.setFireUsers(this.auth.user);
         this.userService.update(this.auth.user, u.user.uid);
@@ -130,6 +106,11 @@ export class CompteComponent implements OnInit {
         this.errorMessage = (err as ApiError).message;
         this.isLoading = false;
       })
+    })
+
+
+   
+   
   }
 
 

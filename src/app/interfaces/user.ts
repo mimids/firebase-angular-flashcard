@@ -27,6 +27,7 @@ export enum Role {
       lastName?: string;
       roles?: Role;
       avatar?: string;
+      imgUrl?:string;
       email: string;
       password: string;
     }

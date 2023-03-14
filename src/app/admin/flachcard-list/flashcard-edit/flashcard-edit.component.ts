@@ -42,10 +42,12 @@ export class FlashcardEditComponent implements OnInit {
     this.show();
   }
 
-  async setVocabulary(data: any) {
+  async setVocabulary(data: {categorys:string,alphabets:string}) {
+    
     let q = query(collection(this.fire, DbCollection.Vocabularys));
-    if (data.categorys.indexOf(CommonWord.ALL) === -1 && data.categorys.length !== 0) {
-      q = query(collection(this.fire, DbCollection.Vocabularys), where('categorys', 'array-contains-any', data.categorys));
+    if (data.categorys != CommonWord.ALL ) {
+      
+      q = query(collection(this.fire, DbCollection.Vocabularys), where('categorys','array-contains-any',[data.categorys]));
     }
     const querySnapshot = await getDocs(q);
 
@@ -78,7 +80,6 @@ export class FlashcardEditComponent implements OnInit {
     }
   }
   async setFlashcard(idcard: (string | null | undefined)) {
-    console.log('idcard', idcard);
     if (idcard !== undefined && idcard !== null) {
 
       const ColleRef = collection(this.fire, DbCollection.Vocabularys);

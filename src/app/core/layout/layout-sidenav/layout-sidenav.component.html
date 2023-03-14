@@ -1,9 +1,9 @@
 <section class="layout-sidenav">
   <mat-nav-list class="m-0 p-0">
-    <div class="theme-primary p-16">
+    <div class="theme-primary p-16 text-center">
       <ng-container *ngIf="account">
         <img
-          src="assets/avatar/{{ account!.avatar}}"
+          src="{{ account!.imgUrl }}"
           default="profile"
           i18n-alt
           alt="Your avatar"

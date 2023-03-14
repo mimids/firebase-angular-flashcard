@@ -12,7 +12,7 @@
       .front,
       .back {
         width: 350px;
-        height: 150px;
+        height: 250px;
       }
       
       /* flip speed goes here */
@@ -31,7 +31,6 @@
         top: 0;
         left: 0;
         padding: 10px;
-        color: white;
       }
       
       /* front pane, placed above back */
@@ -48,10 +47,26 @@
       .back {
         transform: rotateY(180deg);
         border: 1px solid navy;
-        background-color: cadetblue;
+        background-color: lightgray;
       }
       button{
         margin: 10px;
         width: 120px
       }
+    }
+
+    .flyBox{
+      margin: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .wordBox{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px;
+      min-height: 140px;
+      background-color: white;
+    
     }

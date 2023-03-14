@@ -22,7 +22,6 @@ export class WebService {
     this.http.get<Card[]>(`${this.BASE_URL}/cards`)
     .subscribe(data =>{
       this.cards = data;
-      console.log('cards', data)
       this.answers = [];
     },error =>{
       this.error= error;

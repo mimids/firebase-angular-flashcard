@@ -10,7 +10,7 @@
 >
   <img
     *ngIf="account"
-    src="assets/avatar/{{ account!.avatar }}"
+    src="{{ account!.imgUrl }}"
     default="profile"
     i18n-alt
     alt="Your avatar"
@@ -20,9 +20,9 @@
   <mat-icon *ngIf="!account">person</mat-icon>
 </button>
 
-<mat-menu #layoutSettingsMenu="matMenu" xPosition="before">
+<mat-menu #layoutSettingsMenu="matMenu" xPosition="before" >
   <ng-template matMenuContent>
-    <div *ngIf="account" class="centred p-10 theme-primary">
+    <div *ngIf="account" class="centred p-10 theme-primary" style="text-align:center">
       <button
         mat-menu-item
         class="round large mx-20"
@@ -34,7 +34,7 @@
         "
       >
         <img
-          src="assets/avatar/{{ account!.avatar }}"
+          src="{{ account!.avatar }}"
           default="profile"
           i18n-alt
           alt="Your avatar"

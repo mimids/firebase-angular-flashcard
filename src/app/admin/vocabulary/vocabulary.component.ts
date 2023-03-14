@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Category, FlashCard, Vocabulary } from 'src/app/interfaces/card';
+import { Category, CommonWord, FlashCard, Vocabulary } from 'src/app/interfaces/card';
 import { ApiService } from 'src/app/services/api.service';
 import { Firestore, getDocs, getDoc, collection, doc, onSnapshot, where, query } from '@angular/fire/firestore';
 import { DbCollection } from 'src/app/interfaces/firebase';
@@ -15,6 +15,7 @@ import { MatRadioChange } from '@angular/material/radio';
 export class VocabularyComponent implements OnInit {
   public formVoca: FormGroup;
   public vocabularys: Vocabulary[]=[];
+  public formFlash: FormGroup;
   defaultWordLang='fr';
   defaultMeeningLang='en';
   @Output() checkedChange: EventEmitter<MatRadioChange> | undefined ;
@@ -33,12 +34,33 @@ export class VocabularyComponent implements OnInit {
       lang_word: ['fr', Validators.required],
       lang_meaning: ['en', Validators.required],
     });
+    this.formFlash = this.fb.group({
+      categorys: new FormControl('', [Validators.required]),
+      alphabets: new FormControl('', [Validators.required]),
+    });
   }
 
   async ngOnInit() {
     this.show();
   }
 
+  async setVocabulary(data: {categorys:string,alphabets:string}) {
+    
+    let q = query(collection(this.fire, DbCollection.Vocabularys));
+    if (data.categorys != CommonWord.ALL ) {
+      
+      q = query(collection(this.fire, DbCollection.Vocabularys), where('categorys','array-contains-any',[data.categorys]));
+    }
+    const querySnapshot = await getDocs(q);
+
+    this.vocabularys = [];
+    querySnapshot.forEach(doc => {
+      const docData = doc.data();
+      docData.id = doc.id;
+      this.vocabularys.push(docData as Vocabulary);
+    })
+    this.changeDetectorRef.detectChanges();
+  }
   async createVoca(data: Vocabulary) {
     await this.apiService.createVocabulary(data);
   }

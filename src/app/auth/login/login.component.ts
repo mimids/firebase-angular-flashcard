@@ -21,16 +21,16 @@ import { SnackbarService } from '../../services/snackbar.service';
 import { AuthError } from '../auth.model';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { ApiService } from 'src/app/services/api.service';
-import { UserI } from 'src/app/interfaces/user';
+import { Account, UserI } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
-
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   @Output() readonly errorHappens = new EventEmitter<string>();
   formGroup: FormGroup;
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
   isPasswordHidden = true;
   errorMessage = '';
   private readonly isDestroyed$ = new Subject<boolean>();
+  account: Account | undefined;
 
   get f(): { [key: string]: AbstractControl } {
     return this.formGroup.controls;
@@ -54,9 +55,20 @@ export class LoginComponent implements OnInit {
     private readonly snackbarService: SnackbarService,
   ) {
     this.formGroup = this.createFormGroup('change');
+
+    
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): Subscription {
+    return this.userService.account$
+      .pipe(takeUntil(this.isDestroyed$))
+      .subscribe(
+        (res) => {this.account = res;
+          if(this.account){
+          this.router.navigate(['/home']);}},
+        (err) => (this.account = undefined),
+      );
+  }
 
   ngOnDestroy(): void {
     this.isDestroyed$.next(true);

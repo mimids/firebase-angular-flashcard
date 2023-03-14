@@ -1,33 +1,36 @@
 <section>
-<h2 il8>Flashcard</h2>
+  <h2 il8>Flashcard</h2>
   <h4 il8>Just choose one from the list below and you're ready to go!</h4>
+
+
+  <div class="card-body d-flex justify-content-center">
+  <p class="explication">
+    Click on a card and if it is correct, press the correct answer button to make the card disappear. If you want to
+    undo everything, press the RESET button!
+  </p>
+</div>
+  <div class="card-body d-flex justify-content-center">
   <mat-form-field appearance="fill">
-    <mat-label>Flashcard</mat-label>
+    <mat-label il8>Choose your list</mat-label>
     <mat-select [(ngModel)]="selectedFlashCard" (selectionChange)="setFlashcard(selectedFlashCard)">
       <mat-option *ngFor="let list of flashcardlist" [value]="list.id">
         {{ list.name }}
       </mat-option>
     </mat-select>
   </mat-form-field>
+</div>
 
-    <h4 il8>Look at the words and answer what they mean.</h4>
-    <div class="explication">Click on a card and if it is correct, press the correct answer button to make the card disappear. If you want to undo everything, press the RESET button!</div>
-  
-    <div>
-      <div *ngFor="let card of datas">
-        <div class="card-body d-flex justify-content-center">
-          <app-flashcard-contents
-            [card]="card"
-            (answer)="saveAnswer($event)"
-          ></app-flashcard-contents>
-        </div>
+  <div>
+    <div *ngFor="let card of datas">
+      <div class="card-body d-flex justify-content-center">
+        <app-flashcard-contents [card]="card" (answer)="saveAnswer($event)"></app-flashcard-contents>
       </div>
     </div>
-  
-  
-      <div class="card-body d-flex justify-content-center">
-        <button class="btn btn-danger m-2" (click)="reset()">restart</button>
-      </div>
-  
-  </section>
-  
+  </div>
+
+
+  <div class="card-body d-flex justify-content-center">
+    <button class="btn btn-danger m-2" (click)="reset()">restart</button>
+  </div>
+
+</section>

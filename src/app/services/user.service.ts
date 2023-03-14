@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Injectable } from '@angular/core';
+import { getDownloadURL, getStorage, list, ref } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
@@ -19,6 +20,7 @@ export class UserService {
   account$ = this.accountSubject$.asObservable();
   userUid='';
   jwt: string | undefined;
+  changeDetectorRef: any;
 
   constructor(
     private readonly localStorageService: LocalStorageService,
@@ -33,6 +35,28 @@ export class UserService {
       | string
       | undefined;
     this.jwt = jwt;
+
+    const storage = getStorage();
+    getDownloadURL(ref(storage, `avatar/${account?.avatar}`))
+    .then((url) => {
+      
+      // `url` is the download URL for 'images/stars.jpg'
+    })
+
+
+    
+
+          // await getDownloadURL(ref(storage, spaceRef.fullPath))
+          //   .then(url => {
+          //     console.log('url=',url);
+              
+          //   })
+          //   .catch(err => console.log(err))
+          // });
+          // // console.log('this.imgUrls',this.imgUrls);
+          // // this.changeDetectorRef.detectChanges();
+        
+      // })
   }
 
   update(account: Account, jwt?: string): Account {

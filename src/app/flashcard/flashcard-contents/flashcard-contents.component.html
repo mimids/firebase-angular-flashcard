@@ -1,21 +1,27 @@
 <div class="flip-container" [class.flip]="showAnswer" (click)="flip()">
-    <div class="flipper">
-      <div class="front">
+  <div class="flipper">
+    <div class="front">
+      <div class="flyBox">
+        <img src="https://www.civillink.net/sozai/kokki100/pics2676.gif" alt="" srcset="">
+        <img src="https://www.civillink.net/sozai/images/pics2138.png" width="50px" alt="" srcset=""><img
+          src="https://www.civillink.net/sozai/kokki100/pics2658.gif" alt="" srcset="">
+      </div>
+      <div class="wordBox">
         {{ card.word }}
       </div>
-      <div class="back">
-        <div class="flex-column">
-          {{ card.meaning }}
-          <div>
-          <button mat-raised-button color="primary" (click)="setAnswer(true)" i18n>
-            right answer
-          </button>
-          <button mat-raised-button dolor="warn" (click)="setAnswer(false)" i18n>
-            wrong answer
-          </button>
-          </div>
-        </div>
+    </div>
+    <div class="back">
+      <div class="wordBox">
+        {{ card.meaning }}
+      </div>
+      <div class="flyBox">
+        <button mat-raised-button color="warn" (click)="setAnswer(false)" i18n>
+          wrong answer
+        </button>
+        <button mat-raised-button color="accent" (click)="setAnswer(true)" i18n>
+          right answer
+        </button>
       </div>
     </div>
   </div>
-  
+</div>

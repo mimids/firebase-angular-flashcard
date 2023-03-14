@@ -28,6 +28,7 @@ function createWindow() {
         icon: `file://${__dirname}/dist/assets/fuji.png`,
     })
     // win.setMenuBarVisibility(false);
+
     loadURL(win);
     // win.loadFile(path.join(__dirname, `/dist/index.html`));
 }
